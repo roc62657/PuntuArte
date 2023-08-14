@@ -128,6 +128,7 @@ namespace PuntuArte.ConexionDDBB
                 string query = "Select * from Participantes where rol = 'Jurado' and NroDocumento =@nroDocumento";
 
                 SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("nroDocumento", nroDocumento));
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 using (SQLiteDataReader dr = cmd.ExecuteReader())
