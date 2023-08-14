@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /.vs/PuntuArte/v17/.suo
+/PuntuArte/bin/Debug/SistemaDB.db
