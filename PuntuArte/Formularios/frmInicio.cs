@@ -84,7 +84,7 @@ namespace PuntuArte.Formularios
 
         private void button6_Click(object sender, EventArgs e)
         {
-            abrirFormHijo(new frmEventos());
+            abrirFormHijo(new frmCompanias());
             abrirCerrarMenuABM();
         }
 

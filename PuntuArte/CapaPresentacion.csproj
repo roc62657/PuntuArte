@@ -78,6 +78,12 @@
     <Compile Include="Formularios\frmCategoria.Designer.cs">
       <DependentUpon>frmCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmCompanias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCompanias.designer.cs">
+      <DependentUpon>frmCompanias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmEventos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\frmCategoria.resx">
       <DependentUpon>frmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCompanias.resx">
+      <DependentUpon>frmCompanias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmEventos.resx">
       <DependentUpon>frmEventos.cs</DependentUpon>

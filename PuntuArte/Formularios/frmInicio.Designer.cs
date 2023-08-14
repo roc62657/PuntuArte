@@ -34,8 +34,8 @@ namespace PuntuArte.Formularios
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInicio));
             this.pMenu = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -80,23 +80,6 @@ namespace PuntuArte.Formularios
             this.button2.MouseEnter += new System.EventHandler(this.btnMouseEnter);
             this.button2.MouseLeave += new System.EventHandler(this.btnMouseLeave);
             // 
-            // button3
-            // 
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("DejaVu Sans Condensed", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.button3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.Location = new System.Drawing.Point(425, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(120, 35);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "ABM ";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            this.button3.MouseEnter += new System.EventHandler(this.btnMouseEnter);
-            this.button3.MouseLeave += new System.EventHandler(this.btnMouseLeave);
-            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -113,6 +96,23 @@ namespace PuntuArte.Formularios
             this.button1.Text = "X";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button3
+            // 
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("DejaVu Sans Condensed", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.button3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button3.Location = new System.Drawing.Point(425, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(120, 35);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "ABM ";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.MouseEnter += new System.EventHandler(this.btnMouseEnter);
+            this.button3.MouseLeave += new System.EventHandler(this.btnMouseLeave);
             // 
             // pictureBox1
             // 
@@ -174,7 +174,7 @@ namespace PuntuArte.Formularios
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(120, 35);
             this.button6.TabIndex = 3;
-            this.button6.Text = "Eventos";
+            this.button6.Text = "Compañias";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
