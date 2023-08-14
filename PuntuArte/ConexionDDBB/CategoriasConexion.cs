@@ -133,6 +133,7 @@ namespace PuntuArte.ConexionDDBB
 
         }
 
+        //Sector de Jurados
         public List<Categorias> obtenerCategoriasPorJurado(int idParticipante)
         {
             List<Categorias> listCategorias = new List<Categorias>();
@@ -189,9 +190,116 @@ namespace PuntuArte.ConexionDDBB
 
         }
 
-    }
 
-   
+        //Sector seleccion de categorias
+
+        public List<Categorias> obtenerCategoriasNoAsignadasACompania(int idCompania)
+        {
+            List<Categorias> listCategorias = new List<Categorias>();
+
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "SELECT * FROM Categorias c WHERE NOT EXISTS (SELECT 1 FROM Compania_Categoria cc WHERE cc.IDCategoria = c.IDCategoria AND cc.IDCompania = @idCompania)";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                using (SQLiteDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        listCategorias.Add(new Categorias()
+                        {
+                            IDCategoria = int.Parse(dr["IDCategoria"].ToString()),
+                            Nombre = dr["Nombre"].ToString(),
+                            RitmoMusical = dr["RitmoMusical"].ToString(),
+                            Detalle = dr["Detalle"].ToString(),
+
+                        });
+                    }
+                }
+            }
+            return listCategorias;
+        }
+
+        public List<Categorias> obtenerCategoriasAsignadasACompania(int idCompania)
+        {
+            List<Categorias> listCategorias = new List<Categorias>();
+
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "SELECT * FROM Categorias c WHERE EXISTS (SELECT 1 FROM Compania_Categoria cc WHERE cc.IDCategoria = c.IDCategoria AND cc.IDCompania = @idCompania)";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                using (SQLiteDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        listCategorias.Add(new Categorias()
+                        {
+                            IDCategoria = int.Parse(dr["IDCategoria"].ToString()),
+                            Nombre = dr["Nombre"].ToString(),
+                            RitmoMusical = dr["RitmoMusical"].ToString(),
+                            Detalle = dr["Detalle"].ToString(),
+
+                        });
+                    }
+                }
+            }
+            return listCategorias;
+        }
+
+        public bool guardarCategoriaAsignada(int idCompania, int idCategoria)
+        {
+            bool respuesta = true;
+
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Insert into Compania_Categoria (IDCompania, IDCategoria) values (@idCompania,@idCategoria)";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", idCategoria));
+                cmd.CommandType = System.Data.CommandType.Text;
+                if (cmd.ExecuteNonQuery() < 1)
+                {
+                    respuesta = false;
+                }
+            }
+            return respuesta;
+
+        }
+
+        public bool borrarCategoriaAsignada(int idCompania, int idCategoria)
+        {
+            bool respuesta = true;
+
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "delete from Compania_Categoria where IDCompania = @idCompania AND IDCategoria = @idCategoria";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", idCategoria));
+                cmd.CommandType = System.Data.CommandType.Text;
+                if (cmd.ExecuteNonQuery() < 1)
+                {
+                    respuesta = false;
+                }
+            }
+            return respuesta;
+
+        }
+
+    }
 
 }
 
