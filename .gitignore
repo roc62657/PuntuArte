@@ -363,4 +363,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /.vs/PuntuArte/v17/.suo
-/PuntuArte/bin/Debug/SistemaDB.db
+/PuntuArte/bin/Debug
+/PuntuArte/obj/Debug/CapaPresentacion.csproj.AssemblyReference.cache
+/PuntuArte/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
