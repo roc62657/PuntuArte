@@ -11,8 +11,7 @@ namespace PuntuArte.Modelo
     {
         public int IDJuradoCatPuntuacion { get; set; }
         public int IDParticipante { get; set; }
-        public int IDCatPto { get; set; }
-        public string Observacion { get; set; }
+        public int IDCategoriaPuntuacion { get; set; }        
 
     }
 }

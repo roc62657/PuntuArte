@@ -1,4 +1,9 @@
 {
-  "ExpandedNodes": [],
+  "ExpandedNodes": [
+    "",
+    "\\PuntuArte",
+    "\\PuntuArte\\Formularios"
+  ],
+  "SelectedNode": "\\PuntuArte\\Formularios\\frmParticipantes.cs",
   "PreviewInSolutionExplorer": false
 }

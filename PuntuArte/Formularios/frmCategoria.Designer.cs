@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -123,38 +123,38 @@
             this.listaCategorias.BackgroundColor = System.Drawing.Color.LavenderBlush;
             this.listaCategorias.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listaCategorias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Purple;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.listaCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaCategorias.GridColor = System.Drawing.Color.Indigo;
-            this.listaCategorias.Location = new System.Drawing.Point(62, 97);
+            this.listaCategorias.Location = new System.Drawing.Point(62, 111);
             this.listaCategorias.MultiSelect = false;
             this.listaCategorias.Name = "listaCategorias";
             this.listaCategorias.ReadOnly = true;
             this.listaCategorias.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaCategorias.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaCategorias.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.listaCategorias.RowHeadersVisible = false;
             this.listaCategorias.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.LavenderBlush;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.MediumPurple;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            this.listaCategorias.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LavenderBlush;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MediumPurple;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.listaCategorias.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.listaCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listaCategorias.Size = new System.Drawing.Size(978, 238);
+            this.listaCategorias.Size = new System.Drawing.Size(1483, 427);
             this.listaCategorias.TabIndex = 9;
             this.listaCategorias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaCategorias_CellClick);
             // 
@@ -162,7 +162,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(436, 46);
+            this.label4.Location = new System.Drawing.Point(709, 56);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(172, 37);
             this.label4.TabIndex = 10;
@@ -179,9 +179,9 @@
             this.gbCategorias.Controls.Add(this.ritmoMusical);
             this.gbCategorias.Controls.Add(this.detalleCategoria);
             this.gbCategorias.Enabled = false;
-            this.gbCategorias.Location = new System.Drawing.Point(62, 395);
+            this.gbCategorias.Location = new System.Drawing.Point(62, 605);
             this.gbCategorias.Name = "gbCategorias";
-            this.gbCategorias.Size = new System.Drawing.Size(978, 123);
+            this.gbCategorias.Size = new System.Drawing.Size(1483, 152);
             this.gbCategorias.TabIndex = 11;
             this.gbCategorias.TabStop = false;
             this.gbCategorias.Text = "Altas / Modificaciones";
@@ -197,9 +197,9 @@
             // btnCrearCategoria
             // 
             this.btnCrearCategoria.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCrearCategoria.Location = new System.Drawing.Point(532, 366);
+            this.btnCrearCategoria.Location = new System.Drawing.Point(273, 576);
             this.btnCrearCategoria.Name = "btnCrearCategoria";
-            this.btnCrearCategoria.Size = new System.Drawing.Size(156, 23);
+            this.btnCrearCategoria.Size = new System.Drawing.Size(260, 23);
             this.btnCrearCategoria.TabIndex = 12;
             this.btnCrearCategoria.Text = "Crear nuevo";
             this.btnCrearCategoria.UseVisualStyleBackColor = false;
@@ -209,9 +209,9 @@
             // 
             this.btnActualizarCategoria.BackColor = System.Drawing.SystemColors.Control;
             this.btnActualizarCategoria.Enabled = false;
-            this.btnActualizarCategoria.Location = new System.Drawing.Point(713, 366);
+            this.btnActualizarCategoria.Location = new System.Drawing.Point(689, 576);
             this.btnActualizarCategoria.Name = "btnActualizarCategoria";
-            this.btnActualizarCategoria.Size = new System.Drawing.Size(156, 23);
+            this.btnActualizarCategoria.Size = new System.Drawing.Size(260, 23);
             this.btnActualizarCategoria.TabIndex = 13;
             this.btnActualizarCategoria.Text = "Actualizar seleccionado";
             this.btnActualizarCategoria.UseVisualStyleBackColor = false;
@@ -221,9 +221,9 @@
             // 
             this.btnEliminarCategoria.BackColor = System.Drawing.SystemColors.Control;
             this.btnEliminarCategoria.Enabled = false;
-            this.btnEliminarCategoria.Location = new System.Drawing.Point(884, 366);
+            this.btnEliminarCategoria.Location = new System.Drawing.Point(1117, 576);
             this.btnEliminarCategoria.Name = "btnEliminarCategoria";
-            this.btnEliminarCategoria.Size = new System.Drawing.Size(156, 23);
+            this.btnEliminarCategoria.Size = new System.Drawing.Size(260, 23);
             this.btnEliminarCategoria.TabIndex = 14;
             this.btnEliminarCategoria.Text = "Eliminar";
             this.btnEliminarCategoria.UseVisualStyleBackColor = false;
@@ -234,7 +234,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(1123, 554);
+            this.ClientSize = new System.Drawing.Size(1617, 811);
             this.Controls.Add(this.btnEliminarCategoria);
             this.Controls.Add(this.btnActualizarCategoria);
             this.Controls.Add(this.btnCrearCategoria);

@@ -89,11 +89,10 @@ namespace PuntuArte.ConexionDDBB
         {
             List<Participantes> listParticipantes = new List<Participantes>();
 
-
             using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
             {
                 conexion_.Open();
-                string query = "Select * from Participantes";
+                string query = "Select * from Participantes where rol = 'Jurado'";
 
                 SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
                 cmd.CommandType = System.Data.CommandType.Text;
@@ -113,10 +112,34 @@ namespace PuntuArte.ConexionDDBB
                             NroTelefono = dr["NroTelefono"].ToString(),
                             Rol = dr["Rol"].ToString()
                         });
+
                     }
                 }
             }
             return listParticipantes;
+        }
+
+        public int obtenerIDParticipantePorDocumento(string nroDocumento)
+        {
+            int cro = 0;
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Select * from Participantes where rol = 'Jurado' and NroDocumento =@nroDocumento";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                using (SQLiteDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        cmd.Parameters.Add(new SQLiteParameter("nroDocumento", nroDocumento));
+                        cro = int.Parse(dr["IDParticipante"].ToString());
+                    }
+                }
+            }
+            return cro;
         }
 
         public bool eliminarParticipante(string Participante)

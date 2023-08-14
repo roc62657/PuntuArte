@@ -66,9 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConexionDDBB\JuradoCategoriaPuntuacionConexion.cs" />
+    <Compile Include="ConexionDDBB\CategoriaPuntuacionConexion.cs" />
     <Compile Include="ConexionDDBB\CategoriasConexion.cs" />
     <Compile Include="ConexionDDBB\CompaniasConexion.cs" />
     <Compile Include="ConexionDDBB\ParticipantesConexion.cs" />
+    <Compile Include="DTOs\ParticipantesDTO.cs" />
     <Compile Include="Formularios\frmCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,12 +102,11 @@
     <Compile Include="Modelo\Companias.cs" />
     <Compile Include="Modelo\ItemsPuntuacion.cs" />
     <Compile Include="Modelo\JuradoCategoriaPuntuacion.cs" />
-    <Compile Include="Modelo\ParticipanteCategoria.cs" />
+    <Compile Include="Modelo\ParticipanteCompania.cs" />
     <Compile Include="Modelo\ParticipanteCompaniaCategoria.cs" />
     <Compile Include="Modelo\Participantes.cs" />
     <Compile Include="Modelo\PuntuacionesDetalle.cs" />
     <Compile Include="Modelo\PuntuacionesFinales.cs" />
-    <Compile Include="Modelo\Roles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\frmCategoria.resx">

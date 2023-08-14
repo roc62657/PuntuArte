@@ -111,6 +111,7 @@ namespace PuntuArte.ConexionDDBB
             return listCategorias;
         }
 
+       
         public bool eliminarCategoria(string categoria)
         {
             bool respuesta = true;
@@ -132,5 +133,66 @@ namespace PuntuArte.ConexionDDBB
 
         }
 
+        public List<Categorias> obtenerCategoriasPorJurado(int idParticipante)
+        {
+            List<Categorias> listCategorias = new List<Categorias>();
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "select DISTINCT ct.* from Categorias ct INNER JOIN Categoria_Puntuacion ctp ON ct.IDCategoria = ctp.IDCategoria INNER join Jurado_Categoria_Puntuacion jctp ON ctp.IDCategoriaPuntuacion = jctp.IDCategoriaPuntuacion where jctp.IDParticipante= @idParticipante";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idParticipante", idParticipante));
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                using (SQLiteDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        listCategorias.Add(new Categorias()
+                        {
+                            IDCategoria = int.Parse(dr["IDCategoria"].ToString()),
+                            Nombre = dr["Nombre"].ToString(),
+                            RitmoMusical = dr["RitmoMusical"].ToString(),
+                            Detalle = dr["Detalle"].ToString()
+                        });
+                    }
+                }
+            }
+            return listCategorias;
+        }
+
+        public Categorias obtenerCategoriaPorIDCategoria(int idCategoria)
+        {
+            Categorias categoria = new Categorias();
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Select * from Participante_Compania where IDCategoria = @idCategoria";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", idCategoria));
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                using (SQLiteDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        categoria.IDCategoria = int.Parse(dr["IDCategoria"].ToString());
+                        categoria.Nombre = dr["Nombre"].ToString();
+                        categoria.RitmoMusical = dr["RitmoMusical"].ToString();
+                        categoria.Detalle = dr["Detalle"].ToString();
+                    }
+                }
+            }
+            return categoria;
+
+        }
+
     }
+
+   
+
 }
+
+

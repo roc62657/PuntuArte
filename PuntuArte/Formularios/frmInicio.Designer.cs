@@ -55,13 +55,13 @@ namespace PuntuArte.Formularios
             // 
             this.pMenu.BackColor = System.Drawing.Color.MediumPurple;
             this.pMenu.Controls.Add(this.button2);
-            this.pMenu.Controls.Add(this.button3);
             this.pMenu.Controls.Add(this.button1);
+            this.pMenu.Controls.Add(this.button3);
             this.pMenu.Controls.Add(this.pictureBox1);
             this.pMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pMenu.Location = new System.Drawing.Point(0, 0);
             this.pMenu.Name = "pMenu";
-            this.pMenu.Size = new System.Drawing.Size(1131, 39);
+            this.pMenu.Size = new System.Drawing.Size(1625, 39);
             this.pMenu.TabIndex = 0;
             // 
             // button2
@@ -99,14 +99,16 @@ namespace PuntuArte.Formularios
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.MediumPurple;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(1090, 0);
+            this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button1.Location = new System.Drawing.Point(1588, -4);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(37, 39);
+            this.button1.Size = new System.Drawing.Size(37, 43);
             this.button1.TabIndex = 0;
             this.button1.Text = "X";
             this.button1.UseVisualStyleBackColor = false;
@@ -128,25 +130,25 @@ namespace PuntuArte.Formularios
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 39);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(4, 558);
+            this.panel1.Size = new System.Drawing.Size(4, 815);
             this.panel1.TabIndex = 1;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.MediumPurple;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(1127, 39);
+            this.panel2.Location = new System.Drawing.Point(1621, 39);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(4, 558);
+            this.panel2.Size = new System.Drawing.Size(4, 815);
             this.panel2.TabIndex = 2;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.MediumPurple;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(4, 593);
+            this.panel3.Location = new System.Drawing.Point(4, 850);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1123, 4);
+            this.panel3.Size = new System.Drawing.Size(1617, 4);
             this.panel3.TabIndex = 3;
             // 
             // pABM
@@ -183,7 +185,7 @@ namespace PuntuArte.Formularios
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("DejaVu Sans Condensed", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.button5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button5.Location = new System.Drawing.Point(0, 39);
+            this.button5.Location = new System.Drawing.Point(0, 4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(120, 35);
             this.button5.TabIndex = 2;
@@ -198,11 +200,11 @@ namespace PuntuArte.Formularios
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("DejaVu Sans Condensed", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.button4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.Location = new System.Drawing.Point(0, 4);
+            this.button4.Location = new System.Drawing.Point(0, 39);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(120, 35);
             this.button4.TabIndex = 1;
-            this.button4.Text = "Participantes";
+            this.button4.Text = "Jurados";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -214,14 +216,14 @@ namespace PuntuArte.Formularios
             this.pVisualizador.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pVisualizador.Location = new System.Drawing.Point(4, 39);
             this.pVisualizador.Name = "pVisualizador";
-            this.pVisualizador.Size = new System.Drawing.Size(1123, 554);
+            this.pVisualizador.Size = new System.Drawing.Size(1617, 811);
             this.pVisualizador.TabIndex = 4;
             // 
             // frmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1131, 597);
+            this.ClientSize = new System.Drawing.Size(1625, 854);
             this.Controls.Add(this.pVisualizador);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);

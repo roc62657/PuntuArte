@@ -13,6 +13,7 @@ namespace PuntuArte.Modelo
         public int IDJuradoCatPuntuacion { get; set; }
         public int IDCompaniaCategoria { get; set; }
         public int Puntuacion { get; set; }
+        public string Observacion { get; set; }
 
     }
 }

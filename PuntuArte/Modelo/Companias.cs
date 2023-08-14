@@ -11,6 +11,7 @@ namespace PuntuArte.Modelo
     {
         public int IDCompania { get; set; }
         public string Nombre { get; set; }
+        public string Nacionalidad { get; set; }
         public string Detalle { get; set; }
 
     }

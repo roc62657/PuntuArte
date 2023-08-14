@@ -7,10 +7,11 @@ using System.Windows.Forms.VisualStyles;
 
 namespace PuntuArte.Modelo
 {
-    public class Roles
+    public class ParticipanteCompania
     {
-        public int IDRol { get; set; }
-        public string Nombre { get; set; }
-     
+        public int IDParticipanteCompania { get; set; }
+        public int IDCompania { get; set; }
+        public int IDParticipante { get; set; }
+
     }
 }

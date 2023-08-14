@@ -31,6 +31,9 @@ namespace PuntuArte.Formularios
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,13 +41,18 @@ namespace PuntuArte.Formularios
             this.btnActualizarParticipante = new System.Windows.Forms.Button();
             this.btnCrearCategoria = new System.Windows.Forms.Button();
             this.gbParticipantes = new System.Windows.Forms.GroupBox();
+            this.tdIdCategoria = new System.Windows.Forms.TextBox();
+            this.labelCatAg = new System.Windows.Forms.Label();
+            this.cbCategorias = new System.Windows.Forms.ComboBox();
+            this.tbTipoDocParticipante = new System.Windows.Forms.TextBox();
+            this.leyendaHabCateg = new System.Windows.Forms.Label();
+            this.listaCategoriasDeJurado = new System.Windows.Forms.DataGridView();
+            this.bABMCategoriasPart = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.tbIdParticipante = new System.Windows.Forms.TextBox();
-            this.cbTipoDocParticipante = new System.Windows.Forms.ComboBox();
-            this.cbRolParticipante = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tbTelefonoParticipante = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tbNroDocParticipante = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,6 +65,7 @@ namespace PuntuArte.Formularios
             this.label4 = new System.Windows.Forms.Label();
             this.listaParticipantes = new System.Windows.Forms.DataGridView();
             this.gbParticipantes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listaCategoriasDeJurado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaParticipantes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,20 +73,21 @@ namespace PuntuArte.Formularios
             // 
             this.btnEliminarParticipante.BackColor = System.Drawing.SystemColors.Control;
             this.btnEliminarParticipante.Enabled = false;
-            this.btnEliminarParticipante.Location = new System.Drawing.Point(874, 361);
+            this.btnEliminarParticipante.Location = new System.Drawing.Point(1090, 473);
             this.btnEliminarParticipante.Name = "btnEliminarParticipante";
-            this.btnEliminarParticipante.Size = new System.Drawing.Size(156, 23);
+            this.btnEliminarParticipante.Size = new System.Drawing.Size(260, 23);
             this.btnEliminarParticipante.TabIndex = 18;
             this.btnEliminarParticipante.Text = "Eliminar";
             this.btnEliminarParticipante.UseVisualStyleBackColor = false;
+            this.btnEliminarParticipante.Click += new System.EventHandler(this.btnEliminarParticipante_Click);
             // 
             // btnActualizarParticipante
             // 
             this.btnActualizarParticipante.BackColor = System.Drawing.SystemColors.Control;
             this.btnActualizarParticipante.Enabled = false;
-            this.btnActualizarParticipante.Location = new System.Drawing.Point(703, 361);
+            this.btnActualizarParticipante.Location = new System.Drawing.Point(659, 473);
             this.btnActualizarParticipante.Name = "btnActualizarParticipante";
-            this.btnActualizarParticipante.Size = new System.Drawing.Size(156, 23);
+            this.btnActualizarParticipante.Size = new System.Drawing.Size(260, 23);
             this.btnActualizarParticipante.TabIndex = 17;
             this.btnActualizarParticipante.Text = "Actualizar seleccionado";
             this.btnActualizarParticipante.UseVisualStyleBackColor = false;
@@ -86,9 +96,9 @@ namespace PuntuArte.Formularios
             // btnCrearCategoria
             // 
             this.btnCrearCategoria.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCrearCategoria.Location = new System.Drawing.Point(522, 361);
+            this.btnCrearCategoria.Location = new System.Drawing.Point(248, 473);
             this.btnCrearCategoria.Name = "btnCrearCategoria";
-            this.btnCrearCategoria.Size = new System.Drawing.Size(156, 23);
+            this.btnCrearCategoria.Size = new System.Drawing.Size(260, 23);
             this.btnCrearCategoria.TabIndex = 16;
             this.btnCrearCategoria.Text = "Crear nuevo";
             this.btnCrearCategoria.UseVisualStyleBackColor = false;
@@ -96,13 +106,18 @@ namespace PuntuArte.Formularios
             // 
             // gbParticipantes
             // 
+            this.gbParticipantes.Controls.Add(this.tdIdCategoria);
+            this.gbParticipantes.Controls.Add(this.labelCatAg);
+            this.gbParticipantes.Controls.Add(this.cbCategorias);
+            this.gbParticipantes.Controls.Add(this.tbTipoDocParticipante);
+            this.gbParticipantes.Controls.Add(this.leyendaHabCateg);
+            this.gbParticipantes.Controls.Add(this.listaCategoriasDeJurado);
+            this.gbParticipantes.Controls.Add(this.bABMCategoriasPart);
+            this.gbParticipantes.Controls.Add(this.label9);
             this.gbParticipantes.Controls.Add(this.tbIdParticipante);
-            this.gbParticipantes.Controls.Add(this.cbTipoDocParticipante);
-            this.gbParticipantes.Controls.Add(this.cbRolParticipante);
             this.gbParticipantes.Controls.Add(this.label8);
             this.gbParticipantes.Controls.Add(this.tbTelefonoParticipante);
             this.gbParticipantes.Controls.Add(this.label5);
-            this.gbParticipantes.Controls.Add(this.label6);
             this.gbParticipantes.Controls.Add(this.label7);
             this.gbParticipantes.Controls.Add(this.tbNroDocParticipante);
             this.gbParticipantes.Controls.Add(this.label1);
@@ -113,130 +128,210 @@ namespace PuntuArte.Formularios
             this.gbParticipantes.Controls.Add(this.tbApellidoParticipante);
             this.gbParticipantes.Controls.Add(this.tbNacionalidadParticipante);
             this.gbParticipantes.Enabled = false;
-            this.gbParticipantes.Location = new System.Drawing.Point(24, 390);
+            this.gbParticipantes.Location = new System.Drawing.Point(37, 502);
             this.gbParticipantes.Name = "gbParticipantes";
-            this.gbParticipantes.Size = new System.Drawing.Size(1067, 152);
+            this.gbParticipantes.Size = new System.Drawing.Size(1533, 297);
             this.gbParticipantes.TabIndex = 15;
             this.gbParticipantes.TabStop = false;
             this.gbParticipantes.Text = "Altas / Modificaciones";
             // 
+            // tdIdCategoria
+            // 
+            this.tdIdCategoria.Location = new System.Drawing.Point(1452, 51);
+            this.tdIdCategoria.Name = "tdIdCategoria";
+            this.tdIdCategoria.Size = new System.Drawing.Size(75, 20);
+            this.tdIdCategoria.TabIndex = 34;
+            this.tdIdCategoria.Visible = false;
+            // 
+            // labelCatAg
+            // 
+            this.labelCatAg.AutoSize = true;
+            this.labelCatAg.Enabled = false;
+            this.labelCatAg.Location = new System.Drawing.Point(720, 217);
+            this.labelCatAg.Name = "labelCatAg";
+            this.labelCatAg.Size = new System.Drawing.Size(158, 13);
+            this.labelCatAg.TabIndex = 33;
+            this.labelCatAg.Text = "Seleccione categoria a agregar:";
+            // 
+            // cbCategorias
+            // 
+            this.cbCategorias.Enabled = false;
+            this.cbCategorias.FormattingEnabled = true;
+            this.cbCategorias.Location = new System.Drawing.Point(884, 214);
+            this.cbCategorias.Name = "cbCategorias";
+            this.cbCategorias.Size = new System.Drawing.Size(272, 21);
+            this.cbCategorias.TabIndex = 32;
+            this.cbCategorias.SelectedIndexChanged += new System.EventHandler(this.cbCategorias_SelectedIndexChanged_1);
+            // 
+            // tbTipoDocParticipante
+            // 
+            this.tbTipoDocParticipante.Location = new System.Drawing.Point(211, 124);
+            this.tbTipoDocParticipante.Name = "tbTipoDocParticipante";
+            this.tbTipoDocParticipante.Size = new System.Drawing.Size(443, 20);
+            this.tbTipoDocParticipante.TabIndex = 30;
+            // 
+            // leyendaHabCateg
+            // 
+            this.leyendaHabCateg.AutoSize = true;
+            this.leyendaHabCateg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leyendaHabCateg.Location = new System.Drawing.Point(720, 198);
+            this.leyendaHabCateg.Name = "leyendaHabCateg";
+            this.leyendaHabCateg.Size = new System.Drawing.Size(429, 13);
+            this.leyendaHabCateg.TabIndex = 26;
+            this.leyendaHabCateg.Text = "* Se habilitará la carga una vez guardados los datos personales del jurado";
+            this.leyendaHabCateg.Visible = false;
+            // 
+            // listaCategoriasDeJurado
+            // 
+            this.listaCategoriasDeJurado.AllowUserToAddRows = false;
+            this.listaCategoriasDeJurado.AllowUserToDeleteRows = false;
+            this.listaCategoriasDeJurado.AllowUserToResizeColumns = false;
+            this.listaCategoriasDeJurado.AllowUserToResizeRows = false;
+            this.listaCategoriasDeJurado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.listaCategoriasDeJurado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.listaCategoriasDeJurado.BackgroundColor = System.Drawing.Color.LavenderBlush;
+            this.listaCategoriasDeJurado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.listaCategoriasDeJurado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaCategoriasDeJurado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.listaCategoriasDeJurado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listaCategoriasDeJurado.GridColor = System.Drawing.Color.Indigo;
+            this.listaCategoriasDeJurado.Location = new System.Drawing.Point(708, 39);
+            this.listaCategoriasDeJurado.MultiSelect = false;
+            this.listaCategoriasDeJurado.Name = "listaCategoriasDeJurado";
+            this.listaCategoriasDeJurado.ReadOnly = true;
+            this.listaCategoriasDeJurado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaCategoriasDeJurado.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.listaCategoriasDeJurado.RowHeadersVisible = false;
+            this.listaCategoriasDeJurado.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LavenderBlush;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MediumPurple;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.listaCategoriasDeJurado.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.listaCategoriasDeJurado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listaCategoriasDeJurado.Size = new System.Drawing.Size(449, 157);
+            this.listaCategoriasDeJurado.TabIndex = 21;
+            // 
+            // bABMCategoriasPart
+            // 
+            this.bABMCategoriasPart.BackColor = System.Drawing.SystemColors.Control;
+            this.bABMCategoriasPart.Location = new System.Drawing.Point(1018, 239);
+            this.bABMCategoriasPart.Name = "bABMCategoriasPart";
+            this.bABMCategoriasPart.Size = new System.Drawing.Size(139, 22);
+            this.bABMCategoriasPart.TabIndex = 23;
+            this.bABMCategoriasPart.Text = "ABM Categorias";
+            this.bABMCategoriasPart.UseVisualStyleBackColor = false;
+            this.bABMCategoriasPart.Visible = false;
+            this.bABMCategoriasPart.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(705, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(117, 13);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Categorias por calificar:";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
             // tbIdParticipante
             // 
-            this.tbIdParticipante.Location = new System.Drawing.Point(884, 20);
+            this.tbIdParticipante.Location = new System.Drawing.Point(1452, 26);
             this.tbIdParticipante.Name = "tbIdParticipante";
             this.tbIdParticipante.Size = new System.Drawing.Size(75, 20);
             this.tbIdParticipante.TabIndex = 19;
             this.tbIdParticipante.Visible = false;
-            // 
-            // cbTipoDocParticipante
-            // 
-            this.cbTipoDocParticipante.FormattingEnabled = true;
-            this.cbTipoDocParticipante.Items.AddRange(new object[] {
-            "DNI",
-            "Pasaporte",
-            "Tarjeta de residencia"});
-            this.cbTipoDocParticipante.Location = new System.Drawing.Point(617, 22);
-            this.cbTipoDocParticipante.Name = "cbTipoDocParticipante";
-            this.cbTipoDocParticipante.Size = new System.Drawing.Size(198, 21);
-            this.cbTipoDocParticipante.TabIndex = 18;
-            this.cbTipoDocParticipante.SelectedIndexChanged += new System.EventHandler(this.cbTipoDocParticipante_SelectedIndexChanged);
-            // 
-            // cbRolParticipante
-            // 
-            this.cbRolParticipante.FormattingEnabled = true;
-            this.cbRolParticipante.Items.AddRange(new object[] {
-            "Competidor",
-            "Jurado"});
-            this.cbRolParticipante.Location = new System.Drawing.Point(617, 89);
-            this.cbRolParticipante.Name = "cbRolParticipante";
-            this.cbRolParticipante.Size = new System.Drawing.Size(198, 21);
-            this.cbRolParticipante.TabIndex = 17;
-            this.cbRolParticipante.SelectedIndexChanged += new System.EventHandler(this.cbRolParticipante_SelectedIndexChanged);
+            this.tbIdParticipante.TextChanged += new System.EventHandler(this.tbIdParticipante_TextChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(46, 124);
+            this.label8.Location = new System.Drawing.Point(46, 198);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(42, 13);
+            this.label8.Size = new System.Drawing.Size(104, 13);
             this.label8.TabIndex = 15;
-            this.label8.Text = "Nro Tel";
+            this.label8.Text = "Número de Teléfono";
             // 
             // tbTelefonoParticipante
             // 
-            this.tbTelefonoParticipante.Location = new System.Drawing.Point(211, 121);
+            this.tbTelefonoParticipante.Location = new System.Drawing.Point(211, 198);
             this.tbTelefonoParticipante.Name = "tbTelefonoParticipante";
-            this.tbTelefonoParticipante.Size = new System.Drawing.Size(198, 20);
+            this.tbTelefonoParticipante.Size = new System.Drawing.Size(443, 20);
             this.tbTelefonoParticipante.TabIndex = 16;
             this.tbTelefonoParticipante.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTelefonoParticipante_KeyPress);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(452, 26);
+            this.label5.Location = new System.Drawing.Point(42, 124);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 13);
+            this.label5.Size = new System.Drawing.Size(86, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Tipo Doc";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(452, 93);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(23, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Rol";
+            this.label5.Text = "Tipo Documento";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(452, 58);
+            this.label7.Location = new System.Drawing.Point(46, 162);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 13);
+            this.label7.Size = new System.Drawing.Size(106, 13);
             this.label7.TabIndex = 11;
-            this.label7.Text = "Nro Doc";
+            this.label7.Text = "Número Documento*";
             // 
             // tbNroDocParticipante
             // 
-            this.tbNroDocParticipante.Location = new System.Drawing.Point(617, 55);
+            this.tbNroDocParticipante.Location = new System.Drawing.Point(211, 162);
             this.tbNroDocParticipante.Name = "tbNroDocParticipante";
-            this.tbNroDocParticipante.Size = new System.Drawing.Size(198, 20);
+            this.tbNroDocParticipante.Size = new System.Drawing.Size(443, 20);
             this.tbNroDocParticipante.TabIndex = 13;
             this.tbNroDocParticipante.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNroDocParticipante_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 26);
+            this.label1.Location = new System.Drawing.Point(42, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Nombre";
+            this.label1.Text = "Nombre*";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(46, 93);
+            this.label2.Location = new System.Drawing.Point(42, 93);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.Size = new System.Drawing.Size(65, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Nacionalidad";
+            this.label2.Text = "Pais Origen*";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(46, 58);
+            this.label3.Location = new System.Drawing.Point(42, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Apellido";
+            this.label3.Text = "Apellido*";
             // 
             // tbNombreParticipante
             // 
             this.tbNombreParticipante.Location = new System.Drawing.Point(211, 23);
             this.tbNombreParticipante.Name = "tbNombreParticipante";
-            this.tbNombreParticipante.Size = new System.Drawing.Size(198, 20);
+            this.tbNombreParticipante.Size = new System.Drawing.Size(443, 20);
             this.tbNombreParticipante.TabIndex = 4;
             this.tbNombreParticipante.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNombreParticipante_KeyPress);
             // 
@@ -244,11 +339,11 @@ namespace PuntuArte.Formularios
             // 
             this.guardarParticipante.BackColor = System.Drawing.Color.White;
             this.guardarParticipante.Enabled = false;
-            this.guardarParticipante.Location = new System.Drawing.Point(884, 85);
+            this.guardarParticipante.Location = new System.Drawing.Point(549, 233);
             this.guardarParticipante.Name = "guardarParticipante";
-            this.guardarParticipante.Size = new System.Drawing.Size(75, 23);
+            this.guardarParticipante.Size = new System.Drawing.Size(105, 34);
             this.guardarParticipante.TabIndex = 7;
-            this.guardarParticipante.Text = "Guardar";
+            this.guardarParticipante.Text = "Guardar Datos Personales";
             this.guardarParticipante.UseVisualStyleBackColor = false;
             this.guardarParticipante.Click += new System.EventHandler(this.guardarCategoria_Click);
             // 
@@ -256,7 +351,7 @@ namespace PuntuArte.Formularios
             // 
             this.tbApellidoParticipante.Location = new System.Drawing.Point(211, 55);
             this.tbApellidoParticipante.Name = "tbApellidoParticipante";
-            this.tbApellidoParticipante.Size = new System.Drawing.Size(198, 20);
+            this.tbApellidoParticipante.Size = new System.Drawing.Size(443, 20);
             this.tbApellidoParticipante.TabIndex = 5;
             this.tbApellidoParticipante.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbApellidoParticipante_KeyPress);
             // 
@@ -264,7 +359,7 @@ namespace PuntuArte.Formularios
             // 
             this.tbNacionalidadParticipante.Location = new System.Drawing.Point(211, 90);
             this.tbNacionalidadParticipante.Name = "tbNacionalidadParticipante";
-            this.tbNacionalidadParticipante.Size = new System.Drawing.Size(198, 20);
+            this.tbNacionalidadParticipante.Size = new System.Drawing.Size(443, 20);
             this.tbNacionalidadParticipante.TabIndex = 6;
             this.tbNacionalidadParticipante.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNacionalidadParticipante_KeyPress);
             // 
@@ -272,11 +367,12 @@ namespace PuntuArte.Formularios
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(428, 31);
+            this.label4.Location = new System.Drawing.Point(738, 57);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(202, 37);
+            this.label4.Size = new System.Drawing.Size(132, 37);
             this.label4.TabIndex = 20;
-            this.label4.Text = "Participantes";
+            this.label4.Text = "Jurados";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // listaParticipantes
             // 
@@ -299,7 +395,7 @@ namespace PuntuArte.Formularios
             this.listaParticipantes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.listaParticipantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaParticipantes.GridColor = System.Drawing.Color.Indigo;
-            this.listaParticipantes.Location = new System.Drawing.Point(38, 82);
+            this.listaParticipantes.Location = new System.Drawing.Point(37, 111);
             this.listaParticipantes.MultiSelect = false;
             this.listaParticipantes.Name = "listaParticipantes";
             this.listaParticipantes.ReadOnly = true;
@@ -320,16 +416,17 @@ namespace PuntuArte.Formularios
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
             this.listaParticipantes.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.listaParticipantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listaParticipantes.Size = new System.Drawing.Size(1044, 254);
+            this.listaParticipantes.Size = new System.Drawing.Size(1533, 339);
             this.listaParticipantes.TabIndex = 19;
             this.listaParticipantes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaParticipantes_CellClick);
+            this.listaParticipantes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaParticipantes_CellContentClick);
             // 
             // frmParticipantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(1123, 554);
+            this.ClientSize = new System.Drawing.Size(1617, 811);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listaParticipantes);
             this.Controls.Add(this.btnEliminarParticipante);
@@ -342,6 +439,7 @@ namespace PuntuArte.Formularios
             this.Load += new System.EventHandler(this.frmParticipantes_Load);
             this.gbParticipantes.ResumeLayout(false);
             this.gbParticipantes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listaCategoriasDeJurado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaParticipantes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -365,11 +463,16 @@ namespace PuntuArte.Formularios
         private Label label8;
         private TextBox tbTelefonoParticipante;
         private Label label5;
-        private Label label6;
         private Label label7;
         private TextBox tbNroDocParticipante;
-        private ComboBox cbTipoDocParticipante;
-        private ComboBox cbRolParticipante;
         private TextBox tbIdParticipante;
+        private Label label9;
+        private Button bABMCategoriasPart;
+        private DataGridView listaCategoriasDeJurado;
+        private Label leyendaHabCateg;
+        private TextBox tbTipoDocParticipante;
+        private Label labelCatAg;
+        private ComboBox cbCategorias;
+        private TextBox tdIdCategoria;
     }
 }

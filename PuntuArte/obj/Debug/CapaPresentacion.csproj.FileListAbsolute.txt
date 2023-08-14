@@ -12,6 +12,7 @@ D:\Karito\Sistema_Competencia\PuntuArte\PuntuArte\bin\Debug\EntityFramework.SqlS
 D:\Karito\Sistema_Competencia\PuntuArte\PuntuArte\bin\Debug\System.Data.SQLite.xml
 D:\Karito\Sistema_Competencia\PuntuArte\PuntuArte\obj\Debug\CapaPresentacion.csproj.AssemblyReference.cache
 D:\Karito\Sistema_Competencia\PuntuArte\PuntuArte\obj\Debug\CapaPresentacion.csproj.SuggestedBindingRedirects.cache
+D:\Karito\Sistema_Competencia\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Form1.resources
 D:\Karito\Sistema_Competencia\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Properties.Resources.resources
 D:\Karito\Sistema_Competencia\PuntuArte\PuntuArte\obj\Debug\CapaPresentacion.csproj.GenerateResource.cache
 D:\Karito\Sistema_Competencia\PuntuArte\PuntuArte\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
@@ -42,7 +43,27 @@ D:\Proyectos\PuntuArte - SQLite\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Formular
 D:\Proyectos\PuntuArte - SQLite\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Formularios.frmInicio.resources
 D:\Proyectos\PuntuArte - SQLite\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Formularios.frmParticipantes.resources
 D:\Proyectos\PuntuArte - SQLite\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Formularios.frmCategoria.resources
-D:\Karito\Sistema_Competencia\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Formularios.frmCategoria.resources
-D:\Karito\Sistema_Competencia\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Formularios.frmEventos.resources
-D:\Karito\Sistema_Competencia\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Formularios.frmInicio.resources
-D:\Karito\Sistema_Competencia\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Formularios.frmParticipantes.resources
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\bin\Debug\SistemaDB.db
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\bin\Debug\PuntuArte.exe.config
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\bin\Debug\PuntuArte.exe
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\bin\Debug\PuntuArte.pdb
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\bin\Debug\EntityFramework.dll
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\bin\Debug\EntityFramework.SqlServer.dll
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\bin\Debug\System.Data.SQLite.dll
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\bin\Debug\System.Data.SQLite.EF6.dll
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\bin\Debug\System.Data.SQLite.Linq.dll
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\bin\Debug\EntityFramework.xml
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\bin\Debug\EntityFramework.SqlServer.xml
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\bin\Debug\System.Data.SQLite.xml
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\obj\Debug\CapaPresentacion.csproj.AssemblyReference.cache
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\obj\Debug\CapaPresentacion.csproj.SuggestedBindingRedirects.cache
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Formularios.frmCategoria.resources
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Formularios.frmEventos.resources
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Formularios.frmInicio.resources
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Formularios.frmParticipantes.resources
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\obj\Debug\PuntuArte.Properties.Resources.resources
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\obj\Debug\CapaPresentacion.csproj.GenerateResource.cache
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\obj\Debug\CapaPresentacion.csproj.CopyComplete
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\obj\Debug\PuntuArte.exe
+D:\Karito\SistemaCompetencia_GIT\PuntuArte\PuntuArte\obj\Debug\PuntuArte.pdb
