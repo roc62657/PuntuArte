@@ -276,7 +276,7 @@ namespace PuntuArte.Formularios
             this.gbSeleccionCategorias.Enabled = false;
             this.gbSeleccionCategorias.Location = new System.Drawing.Point(43, 280);
             this.gbSeleccionCategorias.Name = "gbSeleccionCategorias";
-            this.gbSeleccionCategorias.Size = new System.Drawing.Size(1520, 271);
+            this.gbSeleccionCategorias.Size = new System.Drawing.Size(1520, 240);
             this.gbSeleccionCategorias.TabIndex = 22;
             this.gbSeleccionCategorias.TabStop = false;
             this.gbSeleccionCategorias.Text = "Seleccione todas las categorías en las que competirá la compañia seleccionada";
@@ -284,7 +284,7 @@ namespace PuntuArte.Formularios
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(858, 40);
+            this.label2.Location = new System.Drawing.Point(858, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(221, 13);
             this.label2.TabIndex = 13;
@@ -293,7 +293,7 @@ namespace PuntuArte.Formularios
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 40);
+            this.label1.Location = new System.Drawing.Point(30, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 13);
             this.label1.TabIndex = 12;
@@ -320,7 +320,7 @@ namespace PuntuArte.Formularios
             this.listaCategoriasAgregadas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.listaCategoriasAgregadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaCategoriasAgregadas.GridColor = System.Drawing.Color.Indigo;
-            this.listaCategoriasAgregadas.Location = new System.Drawing.Point(861, 68);
+            this.listaCategoriasAgregadas.Location = new System.Drawing.Point(861, 36);
             this.listaCategoriasAgregadas.Name = "listaCategoriasAgregadas";
             this.listaCategoriasAgregadas.ReadOnly = true;
             this.listaCategoriasAgregadas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -364,7 +364,7 @@ namespace PuntuArte.Formularios
             this.listaCategoriasDisponibles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.listaCategoriasDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaCategoriasDisponibles.GridColor = System.Drawing.Color.Indigo;
-            this.listaCategoriasDisponibles.Location = new System.Drawing.Point(33, 68);
+            this.listaCategoriasDisponibles.Location = new System.Drawing.Point(33, 36);
             this.listaCategoriasDisponibles.Name = "listaCategoriasDisponibles";
             this.listaCategoriasDisponibles.ReadOnly = true;
             this.listaCategoriasDisponibles.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -413,9 +413,9 @@ namespace PuntuArte.Formularios
             // 
             this.gbParticipantesPorCategoria.Controls.Add(this.cbCategoriasPorCompania);
             this.gbParticipantesPorCategoria.Enabled = false;
-            this.gbParticipantesPorCategoria.Location = new System.Drawing.Point(43, 583);
+            this.gbParticipantesPorCategoria.Location = new System.Drawing.Point(43, 555);
             this.gbParticipantesPorCategoria.Name = "gbParticipantesPorCategoria";
-            this.gbParticipantesPorCategoria.Size = new System.Drawing.Size(1520, 192);
+            this.gbParticipantesPorCategoria.Size = new System.Drawing.Size(1520, 244);
             this.gbParticipantesPorCategoria.TabIndex = 23;
             this.gbParticipantesPorCategoria.TabStop = false;
             this.gbParticipantesPorCategoria.Text = "Seleccione la categoría y a cada uno de los participantes de cada compañia";
