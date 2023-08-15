@@ -412,5 +412,25 @@ namespace PuntuArte.Formularios
 
             cargaDeDatosGrillasParticipantes(companiaSeleccionada.IDCompania, categoriaSeleccionada.IDCategoria);
         }
+
+        ///Alta de Participantes en form nuevo
+        private void bAltaParticipante_Click(object sender, EventArgs e)
+        {
+            frmAltaParticipante formAltaParticipante = new frmAltaParticipante();
+            formAltaParticipante.crearParticipante += new frmAltaParticipante.agregarParticipante(crearParticipante);
+            formAltaParticipante.ShowDialog();
+
+        }
+
+        public void crearParticipante(Participantes participante)
+        {
+            bool rta = ParticipantesConexion.Instancia.guardarParticipante(participante);
+            if (rta)
+            {
+                Companias companiaSeleccionada = (Companias)cbCompanias.SelectedItem;
+                Categorias categoriaSeleccionada = (Categorias)cbCategoriasPorCompania.SelectedItem;
+                cargaDeDatosGrillasParticipantes(companiaSeleccionada.IDCompania, categoriaSeleccionada.IDCategoria);
+            }
+        }
     }
 }

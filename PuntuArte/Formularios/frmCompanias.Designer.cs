@@ -82,6 +82,7 @@ namespace PuntuArte.Formularios
             this.lRitmoMusicalTitulo = new System.Windows.Forms.Label();
             this.lCategoriaTitulo = new System.Windows.Forms.Label();
             this.cbCategoriasPorCompania = new System.Windows.Forms.ComboBox();
+            this.bAltaParticipante = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.gbSeleccionCategorias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaCategoriasAgregadas)).BeginInit();
@@ -430,6 +431,7 @@ namespace PuntuArte.Formularios
             // 
             // gbSelectionParticipantesPorCategoria
             // 
+            this.gbSelectionParticipantesPorCategoria.Controls.Add(this.bAltaParticipante);
             this.gbSelectionParticipantesPorCategoria.Controls.Add(this.bQuitarParticipante);
             this.gbSelectionParticipantesPorCategoria.Controls.Add(this.bAgregarParticipante);
             this.gbSelectionParticipantesPorCategoria.Controls.Add(this.label7);
@@ -633,6 +635,16 @@ namespace PuntuArte.Formularios
             this.cbCategoriasPorCompania.TabIndex = 3;
             this.cbCategoriasPorCompania.SelectedValueChanged += new System.EventHandler(this.cbCategoriasPorCompania_SelectedValueChanged);
             // 
+            // bAltaParticipante
+            // 
+            this.bAltaParticipante.Location = new System.Drawing.Point(665, 28);
+            this.bAltaParticipante.Name = "bAltaParticipante";
+            this.bAltaParticipante.Size = new System.Drawing.Size(24, 23);
+            this.bAltaParticipante.TabIndex = 25;
+            this.bAltaParticipante.Text = "+";
+            this.bAltaParticipante.UseVisualStyleBackColor = true;
+            this.bAltaParticipante.Click += new System.EventHandler(this.bAltaParticipante_Click);
+            // 
             // frmCompanias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -708,5 +720,6 @@ namespace PuntuArte.Formularios
         private DataGridView listaParticipantesSeleccionadosParaCategoria;
         private Label label6;
         private DataGridView listaParticipantesInscriptos;
+        private Button bAltaParticipante;
     }
 }
