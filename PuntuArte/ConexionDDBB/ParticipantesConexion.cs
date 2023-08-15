@@ -137,6 +137,7 @@ namespace PuntuArte.ConexionDDBB
                     {
                         cmd.Parameters.Add(new SQLiteParameter("nroDocumento", nroDocumento));
                         cro = int.Parse(dr["IDParticipante"].ToString());
+
                     }
                 }
             }
