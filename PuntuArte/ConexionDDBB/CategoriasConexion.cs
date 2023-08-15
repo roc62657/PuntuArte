@@ -284,13 +284,27 @@ namespace PuntuArte.ConexionDDBB
             using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
             {
                 conexion_.Open();
-                string query = "delete from Compania_Categoria where IDCompania = @idCompania AND IDCategoria = @idCategoria";
+
+                //Elimina de Participante_Compania_Categoria donde esta relacionada
+                string query = "delete from Participante_Compania_Categoria where IDCompania = @idCompania AND IDCategoria = @idCategoria";
 
                 SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
                 cmd.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
                 cmd.Parameters.Add(new SQLiteParameter("idCategoria", idCategoria));
                 cmd.CommandType = System.Data.CommandType.Text;
                 if (cmd.ExecuteNonQuery() < 1)
+                {
+                    respuesta = false;
+                }
+
+                //Elimina de Compania_Categoria
+                query = "delete from Compania_Categoria where IDCompania = @idCompania AND IDCategoria = @idCategoria";
+
+                SQLiteCommand cmd2 = new SQLiteCommand(query, conexion_);
+                cmd2.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
+                cmd2.Parameters.Add(new SQLiteParameter("idCategoria", idCategoria));
+                cmd2.CommandType = System.Data.CommandType.Text;
+                if (cmd2.ExecuteNonQuery() < 1)
                 {
                     respuesta = false;
                 }

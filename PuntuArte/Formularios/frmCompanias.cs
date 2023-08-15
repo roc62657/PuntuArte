@@ -84,11 +84,11 @@ namespace PuntuArte.Formularios
             Companias companiaSeleccionada = (Companias)cbCompanias.SelectedItem;
             if (companiaSeleccionada != null && companiaSeleccionada.IDCompania != -1)
             {
-                lDetalleDesc.Text =  companiaSeleccionada.Detalle;
+                lDetalleDesc.Text = companiaSeleccionada.Detalle;
                 lNacionalidadDesc.Text = companiaSeleccionada.Nacionalidad;
                 bActualizarCompania.Visible = true;
 
-                habilitarSectorSeleccionDeCategorias(companiaSeleccionada.IDCompania);
+                cargaDeDatosGrillasCategorias(companiaSeleccionada.IDCompania);
             }
             else
             {
@@ -204,7 +204,7 @@ namespace PuntuArte.Formularios
         {
             int cantidadColumnasSeleccionadas = listaCategoriasDisponibles.Rows.GetRowCount(DataGridViewElementStates.Selected);
             Companias companiaSeleccionada = (Companias)cbCompanias.SelectedItem;
-            
+
             if (cantidadColumnasSeleccionadas >= 1)
             {
                 foreach (DataGridViewRow selectRow in listaCategoriasDisponibles.SelectedRows)
@@ -217,7 +217,7 @@ namespace PuntuArte.Formularios
                 MessageBox.Show("Debe seleccionar una fila de categorias para agregar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
-            cargaDeDatosGrillas(companiaSeleccionada.IDCompania);
+            cargaDeDatosGrillasCategorias(companiaSeleccionada.IDCompania);
 
         }
 
@@ -238,17 +238,11 @@ namespace PuntuArte.Formularios
                 MessageBox.Show("Debe seleccionar una fila de categorias para borrarla", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
-            cargaDeDatosGrillas(companiaSeleccionada.IDCompania);
+            cargaDeDatosGrillasCategorias(companiaSeleccionada.IDCompania);
         }
 
-        public void habilitarSectorSeleccionDeCategorias(int idCompania)
-        {
-            gbSeleccionCategorias.Enabled = true;
 
-            cargaDeDatosGrillas(idCompania);
-        }
-
-        public void cargaDeDatosGrillas(int idCompania)
+        public void cargaDeDatosGrillasCategorias(int idCompania)
         {
             gbSeleccionCategorias.Enabled = true;
 
@@ -256,7 +250,7 @@ namespace PuntuArte.Formularios
             listaCategoriasDisponibles.DataSource = null;
             listaCategoriasDisponibles.DataSource = catNoAsignadas;
 
-            bAgregarCategoria.Enabled = catNoAsignadas.Count > 0 ?  true : false;
+            bAgregarCategoria.Enabled = catNoAsignadas.Count > 0 ? true : false;
 
             List<Categorias> catAgregadas = CategoriasConexion.Instancia.obtenerCategoriasAsignadasACompania(idCompania);
             listaCategoriasAgregadas.DataSource = null;
@@ -265,26 +259,134 @@ namespace PuntuArte.Formularios
             bQuitarCategoria.Enabled = catAgregadas.Count > 0 ? true : false;
 
             ///Combo de seleccion de categorias, sector participantes por categoria
-            if (catAgregadas.Count > 0)
-            {
-                gbParticipantesPorCategoria.Enabled = true;
-                cbCategoriasPorCompania.DataSource = catAgregadas;
-                cbCategoriasPorCompania.DisplayMember = "Nombre";
-                cbCategoriasPorCompania.ValueMember = "IDCategoria";
-            }
-            else
-            {
-                gbParticipantesPorCategoria.Enabled = false;
-                cbCategoriasPorCompania.DataSource = null;
-            }
+            cargaDeDatosParticipantesPorCategorias(catAgregadas);
+            
 
         }
 
-        
-
 
         //////Sector de asignacion de participantes por categoria
-        
+
+        public void cargaDeDatosParticipantesPorCategorias(List<Categorias> catAgregadas)
+        {
+            if (catAgregadas.Count > 0)
+            {
+                //agrega item de seleccion vacio para  mostrar por defecto
+                Categorias catDefecto = new Categorias() { IDCategoria=-1, Nombre="Seleccione categoría para asignar participantes...", Detalle="", RitmoMusical="" };
+                List<Categorias> lCat = new List<Categorias> { catDefecto };
+                lCat.AddRange(catAgregadas);
+
+                cbCategoriasPorCompania.DataSource = lCat;
+                cbCategoriasPorCompania.DisplayMember = "Nombre";
+                cbCategoriasPorCompania.ValueMember = "IDCategoria";
+
+                lRitmoMusicalDesc.Text = "";
+                lDetalleCategoriaDesc.Text = "";
+
+                habilitarDeshabilitarSeleccionParticipantes(true);
+            }
+            else
+            {
+                cbCategoriasPorCompania.DataSource = null;
+                habilitarDeshabilitarSeleccionParticipantes(false);
+            }
+        }
+
+        public void habilitarDeshabilitarSeleccionParticipantes(bool mostrarOcultar)
+        {
+            lCategoriaTitulo.Enabled = mostrarOcultar;
+            cbCategoriasPorCompania.Enabled = mostrarOcultar;
+            lRitmoMusicalTitulo.Enabled = mostrarOcultar;
+            lRitmoMusicalDesc.Enabled = mostrarOcultar;
+            lDetalleParticipante.Enabled = mostrarOcultar;
+            lDetalleCategoriaDesc.Enabled = mostrarOcultar;
+        }
+
+
+        private void cbCategoriasPorCompania_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Categorias categoriaSeleccionada = (Categorias)cbCategoriasPorCompania.SelectedItem;
+            if (categoriaSeleccionada != null && categoriaSeleccionada.IDCategoria != -1)
+            {
+                lRitmoMusicalDesc.Text = categoriaSeleccionada.RitmoMusical;
+                lDetalleCategoriaDesc.Text = categoriaSeleccionada.Detalle;
+
+                Companias companiaSeleccionada = (Companias)cbCompanias.SelectedItem;
+                cargaDeDatosGrillasParticipantes(companiaSeleccionada.IDCompania, categoriaSeleccionada.IDCategoria);
+            }
+            else
+            {
+                lRitmoMusicalDesc.Text = "";
+                lDetalleCategoriaDesc.Text = "";
+
+                listaParticipantesInscriptos.DataSource = null;
+                listaParticipantesSeleccionadosParaCategoria.DataSource = null;
+
+                gbSelectionParticipantesPorCategoria.Enabled = false;
+
+            }
+        }
+
+        public void cargaDeDatosGrillasParticipantes(int idCompania, int idCategoria)
+        {
+            if (gbSelectionParticipantesPorCategoria.Enabled != true) gbSelectionParticipantesPorCategoria.Enabled = true;
+
+            List<Participantes> lParticipantesNoAsignadosACategoriaCompania = ParticipantesConexion.Instancia.obtenerParticipantesNoAsignadosACategoriaCompania(idCompania, idCategoria);
+            listaParticipantesInscriptos.DataSource = null;
+            listaParticipantesInscriptos.DataSource = lParticipantesNoAsignadosACategoriaCompania;
+
+            bAgregarParticipante.Enabled = lParticipantesNoAsignadosACategoriaCompania.Count > 0 ? true : false;
+
+            List<Participantes> lParticipantesAsignadosACategoriaCompania = ParticipantesConexion.Instancia.obtenerParticipantesAsignadosACategoriaCompania(idCompania, idCategoria);
+            listaParticipantesSeleccionadosParaCategoria.DataSource = null;
+            listaParticipantesSeleccionadosParaCategoria.DataSource = lParticipantesAsignadosACategoriaCompania;
+
+            bQuitarParticipante.Enabled = lParticipantesAsignadosACategoriaCompania.Count > 0 ? true : false;
+
+        }
+
+
+        private void bAgregarParticipante_Click(object sender, EventArgs e)
+        {
+            int cantidadColumnasSeleccionadas = listaParticipantesInscriptos.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            Companias companiaSeleccionada = (Companias)cbCompanias.SelectedItem;
+            Categorias categoriaSeleccionada = (Categorias)cbCategoriasPorCompania.SelectedItem;
+
+            if (cantidadColumnasSeleccionadas >= 1)
+            {
+                foreach (DataGridViewRow selectRow in listaParticipantesInscriptos.SelectedRows)
+                {
+                    ParticipantesConexion.Instancia.guardarParticipanteAsignadosACategoriaCompania(companiaSeleccionada.IDCompania, categoriaSeleccionada.IDCategoria, int.Parse(selectRow.Cells[0].Value.ToString())); //IDCompania, IDCategoria, IDCategoriaSeleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila de participante para agregar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+            cargaDeDatosGrillasParticipantes(companiaSeleccionada.IDCompania, categoriaSeleccionada.IDCategoria);
+        }
+
+        private void bQuitarParticipante_Click(object sender, EventArgs e)
+        {
+            int cantidadColumnasSeleccionadas = listaParticipantesSeleccionadosParaCategoria.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            Companias companiaSeleccionada = (Companias)cbCompanias.SelectedItem;
+            Categorias categoriaSeleccionada = (Categorias)cbCategoriasPorCompania.SelectedItem;
+
+            if (cantidadColumnasSeleccionadas >= 1)
+            {
+                foreach (DataGridViewRow selectRow in listaParticipantesSeleccionadosParaCategoria.SelectedRows)
+                {
+                    ParticipantesConexion.Instancia.borrarParticipanteAsignadosACategoriaCompania(companiaSeleccionada.IDCompania, categoriaSeleccionada.IDCategoria, int.Parse(selectRow.Cells[0].Value.ToString())); //IDCompania,IDCategoriaSeleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila de categorias para borrarla", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+            cargaDeDatosGrillasParticipantes(companiaSeleccionada.IDCompania, categoriaSeleccionada.IDCategoria);
+        }
 
         
     }

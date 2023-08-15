@@ -164,5 +164,131 @@ namespace PuntuArte.ConexionDDBB
 
         }
 
+
+        ///Relacion Participantes - Categoria - Compania
+
+        public List<Participantes> obtenerParticipantesNoAsignadosACategoriaCompania(int idCompania, int idCategoria)
+        {
+            List<Participantes> listParticipantes = new List<Participantes>();
+
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "select * from Participantes p WHERE NOT EXISTS (" +
+                                    "SELECT 1 FROM Participante_Compania_Categoria pcc WHERE pcc.IDParticipante = p.IDParticipante " +
+                                        "AND pcc.IDCompania = @idCompania AND pcc.IDCategoria = @idCategoria) " +
+                                     "AND p.Rol != 'Jurado'";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", idCategoria));
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                using (SQLiteDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        listParticipantes.Add(new Participantes()
+                        {
+                            IDParticipante = int.Parse(dr["IDParticipante"].ToString()),
+                            Nombre = dr["Nombre"].ToString(),
+                            Apellido = dr["Apellido"].ToString(),
+                            TipoDocumento = dr["TipoDocumento"].ToString(),
+                            NroDocumento = dr["NroDocumento"].ToString(),
+                            Nacionalidad = dr["Nacionalidad"].ToString(),
+                            NroTelefono = dr["NroTelefono"].ToString(),
+                            Rol = dr["Rol"].ToString()
+                        });
+
+                    }
+                }
+            }
+            return listParticipantes;
+        }
+
+        public List<Participantes> obtenerParticipantesAsignadosACategoriaCompania(int idCompania, int idCategoria)
+        {
+            List<Participantes> listParticipantes = new List<Participantes>();
+
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "select * from Participantes p WHERE EXISTS (" +
+                                    "SELECT 1 FROM Participante_Compania_Categoria pcc WHERE pcc.IDParticipante = p.IDParticipante " +
+                                        "AND pcc.IDCompania = @idCompania AND pcc.IDCategoria = @idCategoria) ";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", idCategoria));
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                using (SQLiteDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        listParticipantes.Add(new Participantes()
+                        {
+                            IDParticipante = int.Parse(dr["IDParticipante"].ToString()),
+                            Nombre = dr["Nombre"].ToString(),
+                            Apellido = dr["Apellido"].ToString(),
+                            TipoDocumento = dr["TipoDocumento"].ToString(),
+                            NroDocumento = dr["NroDocumento"].ToString(),
+                            Nacionalidad = dr["Nacionalidad"].ToString(),
+                            NroTelefono = dr["NroTelefono"].ToString(),
+                            Rol = dr["Rol"].ToString()
+                        });
+
+                    }
+                }
+            }
+            return listParticipantes;
+        }
+
+        public bool guardarParticipanteAsignadosACategoriaCompania(int idCompania, int idCategoria, int idParticipante)
+        {
+            bool respuesta = true;
+
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Insert into Participante_Compania_Categoria (IDCompania, IDCategoria, IDParticipante) values (@idCompania,@idCategoria,@idParticipante)";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", idCategoria));
+                cmd.Parameters.Add(new SQLiteParameter("idParticipante", idParticipante));
+                cmd.CommandType = System.Data.CommandType.Text;
+                if (cmd.ExecuteNonQuery() < 1)
+                {
+                    respuesta = false;
+                }
+            }
+            return respuesta;
+
+        }
+
+        public bool borrarParticipanteAsignadosACategoriaCompania(int idCompania, int idCategoria, int idParticipante)
+        {
+            bool respuesta = true;
+
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Delete from  Participante_Compania_Categoria where IDCompania = @idCompania AND IDCategoria = @idCategoria AND IDParticipante = @idParticipante";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", idCategoria));
+                cmd.Parameters.Add(new SQLiteParameter("idParticipante", idParticipante));
+                cmd.CommandType = System.Data.CommandType.Text;
+                if (cmd.ExecuteNonQuery() < 1)
+                {
+                    respuesta = false;
+                }
+            }
+            return respuesta;
+
+        }
+
     }
 }
