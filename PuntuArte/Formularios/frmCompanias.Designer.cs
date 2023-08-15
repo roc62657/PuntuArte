@@ -37,6 +37,12 @@ namespace PuntuArte.Formularios
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bActualizarCompania = new System.Windows.Forms.Button();
@@ -63,20 +69,33 @@ namespace PuntuArte.Formularios
             this.listaCategoriasDisponibles = new System.Windows.Forms.DataGridView();
             this.bQuitarCategoria = new System.Windows.Forms.Button();
             this.bAgregarCategoria = new System.Windows.Forms.Button();
-            this.gbParticipantesPorCategoria = new System.Windows.Forms.GroupBox();
+            this.gbSelectionParticipantesPorCategoria = new System.Windows.Forms.GroupBox();
+            this.bQuitarParticipante = new System.Windows.Forms.Button();
+            this.bAgregarParticipante = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.listaParticipantesSeleccionadosParaCategoria = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.listaParticipantesInscriptos = new System.Windows.Forms.DataGridView();
+            this.lDetalleCategoriaDesc = new System.Windows.Forms.Label();
+            this.lDetalleParticipante = new System.Windows.Forms.Label();
+            this.lRitmoMusicalDesc = new System.Windows.Forms.Label();
+            this.lRitmoMusicalTitulo = new System.Windows.Forms.Label();
+            this.lCategoriaTitulo = new System.Windows.Forms.Label();
             this.cbCategoriasPorCompania = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.gbSeleccionCategorias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaCategoriasAgregadas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaCategoriasDisponibles)).BeginInit();
-            this.gbParticipantesPorCategoria.SuspendLayout();
+            this.gbSelectionParticipantesPorCategoria.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listaParticipantesSeleccionadosParaCategoria)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaParticipantesInscriptos)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(701, 58);
+            this.label4.Location = new System.Drawing.Point(701, 34);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(180, 37);
             this.label4.TabIndex = 20;
@@ -101,7 +120,7 @@ namespace PuntuArte.Formularios
             this.groupBox1.Controls.Add(this.cbCompanias);
             this.groupBox1.Controls.Add(this.rbCrearActualizarCompania);
             this.groupBox1.Controls.Add(this.rbSeleccionarCompania);
-            this.groupBox1.Location = new System.Drawing.Point(43, 113);
+            this.groupBox1.Location = new System.Drawing.Point(43, 89);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1520, 140);
             this.groupBox1.TabIndex = 21;
@@ -274,7 +293,7 @@ namespace PuntuArte.Formularios
             this.gbSeleccionCategorias.Controls.Add(this.bQuitarCategoria);
             this.gbSeleccionCategorias.Controls.Add(this.bAgregarCategoria);
             this.gbSeleccionCategorias.Enabled = false;
-            this.gbSeleccionCategorias.Location = new System.Drawing.Point(43, 280);
+            this.gbSeleccionCategorias.Location = new System.Drawing.Point(43, 256);
             this.gbSeleccionCategorias.Name = "gbSeleccionCategorias";
             this.gbSeleccionCategorias.Size = new System.Drawing.Size(1520, 240);
             this.gbSeleccionCategorias.TabIndex = 22;
@@ -320,7 +339,7 @@ namespace PuntuArte.Formularios
             this.listaCategoriasAgregadas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.listaCategoriasAgregadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaCategoriasAgregadas.GridColor = System.Drawing.Color.Indigo;
-            this.listaCategoriasAgregadas.Location = new System.Drawing.Point(861, 36);
+            this.listaCategoriasAgregadas.Location = new System.Drawing.Point(861, 43);
             this.listaCategoriasAgregadas.Name = "listaCategoriasAgregadas";
             this.listaCategoriasAgregadas.ReadOnly = true;
             this.listaCategoriasAgregadas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -340,7 +359,7 @@ namespace PuntuArte.Formularios
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             this.listaCategoriasAgregadas.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.listaCategoriasAgregadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listaCategoriasAgregadas.Size = new System.Drawing.Size(639, 180);
+            this.listaCategoriasAgregadas.Size = new System.Drawing.Size(639, 173);
             this.listaCategoriasAgregadas.TabIndex = 11;
             // 
             // listaCategoriasDisponibles
@@ -364,7 +383,7 @@ namespace PuntuArte.Formularios
             this.listaCategoriasDisponibles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.listaCategoriasDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaCategoriasDisponibles.GridColor = System.Drawing.Color.Indigo;
-            this.listaCategoriasDisponibles.Location = new System.Drawing.Point(33, 36);
+            this.listaCategoriasDisponibles.Location = new System.Drawing.Point(33, 43);
             this.listaCategoriasDisponibles.Name = "listaCategoriasDisponibles";
             this.listaCategoriasDisponibles.ReadOnly = true;
             this.listaCategoriasDisponibles.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -384,7 +403,7 @@ namespace PuntuArte.Formularios
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
             this.listaCategoriasDisponibles.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.listaCategoriasDisponibles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listaCategoriasDisponibles.Size = new System.Drawing.Size(653, 180);
+            this.listaCategoriasDisponibles.Size = new System.Drawing.Size(653, 173);
             this.listaCategoriasDisponibles.TabIndex = 10;
             // 
             // bQuitarCategoria
@@ -409,25 +428,210 @@ namespace PuntuArte.Formularios
             this.bAgregarCategoria.UseVisualStyleBackColor = false;
             this.bAgregarCategoria.Click += new System.EventHandler(this.bAgregarCategoria_Click);
             // 
-            // gbParticipantesPorCategoria
+            // gbSelectionParticipantesPorCategoria
             // 
-            this.gbParticipantesPorCategoria.Controls.Add(this.cbCategoriasPorCompania);
-            this.gbParticipantesPorCategoria.Enabled = false;
-            this.gbParticipantesPorCategoria.Location = new System.Drawing.Point(43, 555);
-            this.gbParticipantesPorCategoria.Name = "gbParticipantesPorCategoria";
-            this.gbParticipantesPorCategoria.Size = new System.Drawing.Size(1520, 244);
-            this.gbParticipantesPorCategoria.TabIndex = 23;
-            this.gbParticipantesPorCategoria.TabStop = false;
-            this.gbParticipantesPorCategoria.Text = "Seleccione la categoría y a cada uno de los participantes de cada compañia";
+            this.gbSelectionParticipantesPorCategoria.Controls.Add(this.bQuitarParticipante);
+            this.gbSelectionParticipantesPorCategoria.Controls.Add(this.bAgregarParticipante);
+            this.gbSelectionParticipantesPorCategoria.Controls.Add(this.label7);
+            this.gbSelectionParticipantesPorCategoria.Controls.Add(this.listaParticipantesSeleccionadosParaCategoria);
+            this.gbSelectionParticipantesPorCategoria.Controls.Add(this.label6);
+            this.gbSelectionParticipantesPorCategoria.Controls.Add(this.listaParticipantesInscriptos);
+            this.gbSelectionParticipantesPorCategoria.Enabled = false;
+            this.gbSelectionParticipantesPorCategoria.Location = new System.Drawing.Point(43, 550);
+            this.gbSelectionParticipantesPorCategoria.Name = "gbSelectionParticipantesPorCategoria";
+            this.gbSelectionParticipantesPorCategoria.Size = new System.Drawing.Size(1520, 249);
+            this.gbSelectionParticipantesPorCategoria.TabIndex = 23;
+            this.gbSelectionParticipantesPorCategoria.TabStop = false;
+            this.gbSelectionParticipantesPorCategoria.Text = "Seleccione la categoría y a cada uno de los participantes de cada compañia";
+            // 
+            // bQuitarParticipante
+            // 
+            this.bQuitarParticipante.BackColor = System.Drawing.SystemColors.Control;
+            this.bQuitarParticipante.Enabled = false;
+            this.bQuitarParticipante.Location = new System.Drawing.Point(732, 137);
+            this.bQuitarParticipante.Name = "bQuitarParticipante";
+            this.bQuitarParticipante.Size = new System.Drawing.Size(87, 43);
+            this.bQuitarParticipante.TabIndex = 24;
+            this.bQuitarParticipante.Text = "<< Quitar";
+            this.bQuitarParticipante.UseVisualStyleBackColor = false;
+            this.bQuitarParticipante.Click += new System.EventHandler(this.bQuitarParticipante_Click);
+            // 
+            // bAgregarParticipante
+            // 
+            this.bAgregarParticipante.BackColor = System.Drawing.SystemColors.Control;
+            this.bAgregarParticipante.Enabled = false;
+            this.bAgregarParticipante.Location = new System.Drawing.Point(732, 57);
+            this.bAgregarParticipante.Name = "bAgregarParticipante";
+            this.bAgregarParticipante.Size = new System.Drawing.Size(87, 43);
+            this.bAgregarParticipante.TabIndex = 23;
+            this.bAgregarParticipante.Text = "Agregar >>";
+            this.bAgregarParticipante.UseVisualStyleBackColor = false;
+            this.bAgregarParticipante.Click += new System.EventHandler(this.bAgregarParticipante_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(861, 24);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(313, 13);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Participantes seleccionados por la compañia para esta categoría";
+            // 
+            // listaParticipantesSeleccionadosParaCategoria
+            // 
+            this.listaParticipantesSeleccionadosParaCategoria.AllowUserToAddRows = false;
+            this.listaParticipantesSeleccionadosParaCategoria.AllowUserToDeleteRows = false;
+            this.listaParticipantesSeleccionadosParaCategoria.AllowUserToResizeColumns = false;
+            this.listaParticipantesSeleccionadosParaCategoria.AllowUserToResizeRows = false;
+            this.listaParticipantesSeleccionadosParaCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.listaParticipantesSeleccionadosParaCategoria.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.listaParticipantesSeleccionadosParaCategoria.BackgroundColor = System.Drawing.Color.LavenderBlush;
+            this.listaParticipantesSeleccionadosParaCategoria.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listaParticipantesSeleccionadosParaCategoria.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaParticipantesSeleccionadosParaCategoria.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.listaParticipantesSeleccionadosParaCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listaParticipantesSeleccionadosParaCategoria.GridColor = System.Drawing.Color.Indigo;
+            this.listaParticipantesSeleccionadosParaCategoria.Location = new System.Drawing.Point(864, 57);
+            this.listaParticipantesSeleccionadosParaCategoria.Name = "listaParticipantesSeleccionadosParaCategoria";
+            this.listaParticipantesSeleccionadosParaCategoria.ReadOnly = true;
+            this.listaParticipantesSeleccionadosParaCategoria.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaParticipantesSeleccionadosParaCategoria.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.listaParticipantesSeleccionadosParaCategoria.RowHeadersVisible = false;
+            this.listaParticipantesSeleccionadosParaCategoria.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LavenderBlush;
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.MediumPurple;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            this.listaParticipantesSeleccionadosParaCategoria.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.listaParticipantesSeleccionadosParaCategoria.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listaParticipantesSeleccionadosParaCategoria.Size = new System.Drawing.Size(639, 162);
+            this.listaParticipantesSeleccionadosParaCategoria.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(33, 24);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(115, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Participantes inscriptos";
+            // 
+            // listaParticipantesInscriptos
+            // 
+            this.listaParticipantesInscriptos.AllowUserToAddRows = false;
+            this.listaParticipantesInscriptos.AllowUserToDeleteRows = false;
+            this.listaParticipantesInscriptos.AllowUserToResizeColumns = false;
+            this.listaParticipantesInscriptos.AllowUserToResizeRows = false;
+            this.listaParticipantesInscriptos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.listaParticipantesInscriptos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.listaParticipantesInscriptos.BackgroundColor = System.Drawing.Color.LavenderBlush;
+            this.listaParticipantesInscriptos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listaParticipantesInscriptos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaParticipantesInscriptos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.listaParticipantesInscriptos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listaParticipantesInscriptos.GridColor = System.Drawing.Color.Indigo;
+            this.listaParticipantesInscriptos.Location = new System.Drawing.Point(36, 57);
+            this.listaParticipantesInscriptos.Name = "listaParticipantesInscriptos";
+            this.listaParticipantesInscriptos.ReadOnly = true;
+            this.listaParticipantesInscriptos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaParticipantesInscriptos.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.listaParticipantesInscriptos.RowHeadersVisible = false;
+            this.listaParticipantesInscriptos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.LavenderBlush;
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.MediumPurple;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            this.listaParticipantesInscriptos.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.listaParticipantesInscriptos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listaParticipantesInscriptos.Size = new System.Drawing.Size(653, 162);
+            this.listaParticipantesInscriptos.TabIndex = 19;
+            // 
+            // lDetalleCategoriaDesc
+            // 
+            this.lDetalleCategoriaDesc.AutoSize = true;
+            this.lDetalleCategoriaDesc.Enabled = false;
+            this.lDetalleCategoriaDesc.Location = new System.Drawing.Point(921, 523);
+            this.lDetalleCategoriaDesc.Name = "lDetalleCategoriaDesc";
+            this.lDetalleCategoriaDesc.Size = new System.Drawing.Size(0, 13);
+            this.lDetalleCategoriaDesc.TabIndex = 18;
+            // 
+            // lDetalleParticipante
+            // 
+            this.lDetalleParticipante.AutoSize = true;
+            this.lDetalleParticipante.Enabled = false;
+            this.lDetalleParticipante.Location = new System.Drawing.Point(863, 523);
+            this.lDetalleParticipante.Name = "lDetalleParticipante";
+            this.lDetalleParticipante.Size = new System.Drawing.Size(43, 13);
+            this.lDetalleParticipante.TabIndex = 17;
+            this.lDetalleParticipante.Text = "Detalle:";
+            // 
+            // lRitmoMusicalDesc
+            // 
+            this.lRitmoMusicalDesc.AutoSize = true;
+            this.lRitmoMusicalDesc.Enabled = false;
+            this.lRitmoMusicalDesc.Location = new System.Drawing.Point(740, 523);
+            this.lRitmoMusicalDesc.Name = "lRitmoMusicalDesc";
+            this.lRitmoMusicalDesc.Size = new System.Drawing.Size(0, 13);
+            this.lRitmoMusicalDesc.TabIndex = 16;
+            // 
+            // lRitmoMusicalTitulo
+            // 
+            this.lRitmoMusicalTitulo.AutoSize = true;
+            this.lRitmoMusicalTitulo.Enabled = false;
+            this.lRitmoMusicalTitulo.Location = new System.Drawing.Point(651, 523);
+            this.lRitmoMusicalTitulo.Name = "lRitmoMusicalTitulo";
+            this.lRitmoMusicalTitulo.Size = new System.Drawing.Size(76, 13);
+            this.lRitmoMusicalTitulo.TabIndex = 15;
+            this.lRitmoMusicalTitulo.Text = "Ritmo Musical:";
+            // 
+            // lCategoriaTitulo
+            // 
+            this.lCategoriaTitulo.AutoSize = true;
+            this.lCategoriaTitulo.Enabled = false;
+            this.lCategoriaTitulo.Location = new System.Drawing.Point(76, 523);
+            this.lCategoriaTitulo.Name = "lCategoriaTitulo";
+            this.lCategoriaTitulo.Size = new System.Drawing.Size(54, 13);
+            this.lCategoriaTitulo.TabIndex = 4;
+            this.lCategoriaTitulo.Text = "Categoría";
             // 
             // cbCategoriasPorCompania
             // 
             this.cbCategoriasPorCompania.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCategoriasPorCompania.Enabled = false;
             this.cbCategoriasPorCompania.FormattingEnabled = true;
-            this.cbCategoriasPorCompania.Location = new System.Drawing.Point(149, 32);
+            this.cbCategoriasPorCompania.Location = new System.Drawing.Point(136, 515);
             this.cbCategoriasPorCompania.Name = "cbCategoriasPorCompania";
-            this.cbCategoriasPorCompania.Size = new System.Drawing.Size(438, 21);
+            this.cbCategoriasPorCompania.Size = new System.Drawing.Size(494, 21);
             this.cbCategoriasPorCompania.TabIndex = 3;
+            this.cbCategoriasPorCompania.SelectedValueChanged += new System.EventHandler(this.cbCategoriasPorCompania_SelectedValueChanged);
             // 
             // frmCompanias
             // 
@@ -435,10 +639,16 @@ namespace PuntuArte.Formularios
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(1617, 811);
-            this.Controls.Add(this.gbParticipantesPorCategoria);
+            this.Controls.Add(this.gbSelectionParticipantesPorCategoria);
             this.Controls.Add(this.gbSeleccionCategorias);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.lCategoriaTitulo);
+            this.Controls.Add(this.cbCategoriasPorCompania);
+            this.Controls.Add(this.lDetalleCategoriaDesc);
+            this.Controls.Add(this.lRitmoMusicalTitulo);
+            this.Controls.Add(this.lDetalleParticipante);
+            this.Controls.Add(this.lRitmoMusicalDesc);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmCompanias";
             this.Text = "frmCompanias";
@@ -449,7 +659,10 @@ namespace PuntuArte.Formularios
             this.gbSeleccionCategorias.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaCategoriasAgregadas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaCategoriasDisponibles)).EndInit();
-            this.gbParticipantesPorCategoria.ResumeLayout(false);
+            this.gbSelectionParticipantesPorCategoria.ResumeLayout(false);
+            this.gbSelectionParticipantesPorCategoria.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listaParticipantesSeleccionadosParaCategoria)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaParticipantesInscriptos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,7 +695,18 @@ namespace PuntuArte.Formularios
         private DataGridView listaCategoriasDisponibles;
         private Label label1;
         private Label label2;
-        private GroupBox gbParticipantesPorCategoria;
+        private GroupBox gbSelectionParticipantesPorCategoria;
         private ComboBox cbCategoriasPorCompania;
+        private Label lCategoriaTitulo;
+        private Label lRitmoMusicalDesc;
+        private Label lRitmoMusicalTitulo;
+        private Label lDetalleCategoriaDesc;
+        private Label lDetalleParticipante;
+        private Button bQuitarParticipante;
+        private Button bAgregarParticipante;
+        private Label label7;
+        private DataGridView listaParticipantesSeleccionadosParaCategoria;
+        private Label label6;
+        private DataGridView listaParticipantesInscriptos;
     }
 }

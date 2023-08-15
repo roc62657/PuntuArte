@@ -8,9 +8,9 @@ using System.Windows.Forms.VisualStyles;
 namespace PuntuArte.Modelo
 {
     public class ParticipanteCompaniaCategoria
-    {
-        public int IDParticipanteCompaniaCategoria { get; set; }
-        public int IDParticipante { get; set; }
+    {        
         public int IDCompaniaCategoria { get; set; }
+        public int IDCategoria { get; set; }
+        public int IDParticipante { get; set; }
     }
 }
