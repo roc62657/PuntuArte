@@ -76,6 +76,11 @@ namespace PuntuArte.Formularios
             if (rbCrearActualizarCompania.Checked)
             {
                 habilitarNuevo();
+
+                lDetalleDesc.Text = "";
+                lNacionalidadDesc.Text = "";
+                bActualizarCompania.Visible = false;
+                deshabilitarTodosControles(); //deshabilita todas las secciones
             }
         }
 
@@ -95,6 +100,8 @@ namespace PuntuArte.Formularios
                 lDetalleDesc.Text = "";
                 lNacionalidadDesc.Text = "";
                 bActualizarCompania.Visible = false;
+
+                deshabilitarTodosControles(); //deshabilita todas las secciones
             }
         }
 
@@ -263,13 +270,31 @@ namespace PuntuArte.Formularios
             
 
         }
+        
+        public void deshabilitarTodosControles()
+        {
+            listaCategoriasDisponibles.DataSource = null;
+            listaCategoriasAgregadas.DataSource = null;
+
+            bAgregarCategoria.Enabled = false;
+            bQuitarCategoria.Enabled = false;
+
+            gbSeleccionCategorias.Enabled = false;
+
+
+            ///Combo de seleccion de categorias, sector participantes por categoria
+            cbCategoriasPorCompania.DataSource = null;
+            habilitarDeshabilitarSeleccionParticipantes(false);
+
+
+        }
 
 
         //////Sector de asignacion de participantes por categoria
 
         public void cargaDeDatosParticipantesPorCategorias(List<Categorias> catAgregadas)
         {
-            if (catAgregadas.Count > 0)
+            if (catAgregadas != null && catAgregadas.Count > 0)
             {
                 //agrega item de seleccion vacio para  mostrar por defecto
                 Categorias catDefecto = new Categorias() { IDCategoria=-1, Nombre="Seleccione categoría para asignar participantes...", Detalle="", RitmoMusical="" };
@@ -387,7 +412,5 @@ namespace PuntuArte.Formularios
 
             cargaDeDatosGrillasParticipantes(companiaSeleccionada.IDCompania, categoriaSeleccionada.IDCategoria);
         }
-
-        
     }
 }

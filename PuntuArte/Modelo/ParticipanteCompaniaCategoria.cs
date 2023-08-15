@@ -9,7 +9,7 @@ namespace PuntuArte.Modelo
 {
     public class ParticipanteCompaniaCategoria
     {        
-        public int IDCompaniaCategoria { get; set; }
+        public int IDCompania { get; set; }
         public int IDCategoria { get; set; }
         public int IDParticipante { get; set; }
     }
