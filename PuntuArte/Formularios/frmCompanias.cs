@@ -417,8 +417,8 @@ namespace PuntuArte.Formularios
         ///Alta de Participantes en form nuevo
         private void bAltaParticipante_Click(object sender, EventArgs e)
         {
-            frmAltaParticipante formAltaParticipante = new frmAltaParticipante();
-            formAltaParticipante.crearModificarParticipante += new frmAltaParticipante.agregarParticipante(crearModificarParticipante);
+            frmABMParticipante formAltaParticipante = new frmABMParticipante();
+            formAltaParticipante.crearModificarParticipante += new frmABMParticipante.agregarParticipante(crearModificarParticipante);
             formAltaParticipante.ShowDialog();
 
         }
@@ -451,9 +451,9 @@ namespace PuntuArte.Formularios
             {
                 DataGridViewRow selectRow = listaParticipantesInscriptos.SelectedRows[0];
 
-                frmAltaParticipante formAltaParticipante = new frmAltaParticipante(int.Parse(selectRow.Cells[0].Value.ToString())); //IDCategoriaSeleccionada
-                formAltaParticipante.crearModificarParticipante += new frmAltaParticipante.agregarParticipante(crearModificarParticipante);
-                formAltaParticipante.eliminarParticipante += new frmAltaParticipante.borrarParticipante(eliminarParticipante);
+                frmABMParticipante formAltaParticipante = new frmABMParticipante(int.Parse(selectRow.Cells[0].Value.ToString())); //IDCategoriaSeleccionada
+                formAltaParticipante.crearModificarParticipante += new frmABMParticipante.agregarParticipante(crearModificarParticipante);
+                formAltaParticipante.eliminarParticipante += new frmABMParticipante.borrarParticipante(eliminarParticipante);
                 formAltaParticipante.ShowDialog(); 
             }
             else

@@ -12,18 +12,18 @@ using System.Windows.Forms;
 
 namespace PuntuArte.Formularios
 {
-    public partial class frmAltaParticipante : Form
+    public partial class frmABMParticipante : Form
     {
         public delegate void agregarParticipante(Participantes participante);
         public delegate void borrarParticipante(int participante);
         public event agregarParticipante crearModificarParticipante;
         public event borrarParticipante eliminarParticipante;
-        public frmAltaParticipante()
+        public frmABMParticipante()
         {
             InitializeComponent();
         }
 
-        public frmAltaParticipante(int idParticipante)
+        public frmABMParticipante(int idParticipante)
         {
             InitializeComponent();
 

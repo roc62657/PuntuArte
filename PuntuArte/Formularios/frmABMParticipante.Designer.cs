@@ -1,6 +1,6 @@
 ﻿namespace PuntuArte.Formularios
 {
-    partial class frmAltaParticipante
+    partial class frmABMParticipante
     {
         /// <summary>
         /// Required designer variable.

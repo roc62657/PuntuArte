@@ -72,11 +72,11 @@
     <Compile Include="ConexionDDBB\CompaniasConexion.cs" />
     <Compile Include="ConexionDDBB\ParticipantesConexion.cs" />
     <Compile Include="DTOs\ParticipantesDTO.cs" />
-    <Compile Include="Formularios\frmAltaParticipante.cs">
+    <Compile Include="Formularios\frmABMParticipante.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmAltaParticipante.Designer.cs">
-      <DependentUpon>frmAltaParticipante.cs</DependentUpon>
+    <Compile Include="Formularios\frmABMParticipante.Designer.cs">
+      <DependentUpon>frmABMParticipante.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmCategoria.cs">
       <SubType>Form</SubType>
@@ -121,8 +121,8 @@
     <Compile Include="Modelo\PuntuacionesFinales.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Formularios\frmAltaParticipante.resx">
-      <DependentUpon>frmAltaParticipante.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\frmABMParticipante.resx">
+      <DependentUpon>frmABMParticipante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmCategoria.resx">
       <DependentUpon>frmCategoria.cs</DependentUpon>
