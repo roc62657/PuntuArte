@@ -60,9 +60,9 @@ namespace PuntuArte.ConexionDDBB
             return participante;
         }
 
-        public bool guardarParticipante(Participantes participante)
+        public int guardarParticipante(Participantes participante)
         {
-            bool respuesta = true;
+            int respuesta = 0;
 
             using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
             {
@@ -81,12 +81,17 @@ namespace PuntuArte.ConexionDDBB
                 cmd.CommandType = System.Data.CommandType.Text;
                 if (cmd.ExecuteNonQuery() < 1)
                 {
-                    respuesta = false;
+                    respuesta = -1;
+                }
+                else
+                {
+                    respuesta = int.Parse(conexion_.LastInsertRowId.ToString());
                 }
             }
             return respuesta;
 
         }
+
 
         public bool actualizarParticipante(Participantes participante)
         {
@@ -151,23 +156,24 @@ namespace PuntuArte.ConexionDDBB
             return listParticipantes;
         }
 
-        public int obtenerIDParticipantePorDocumento(string nroDocumento)
+        //Obtiene Jurado por Nacionalidad y Numero de Documento
+        public int obtenerIDParticipanteJuradoPorDocumentoYNacionalidad(string nroDocumento, string nacionalidad)
         {
-            int cro = 0;
+            int cro = -1;
             using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
             {
                 conexion_.Open();
-                string query = "Select * from Participantes where rol = 'Jurado' and NroDocumento =@nroDocumento";
+                string query = "Select * from Participantes where rol = 'Jurado' and NroDocumento =@nroDocumento and Nacionalidad=@nacionalidad";
 
                 SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
                 cmd.Parameters.Add(new SQLiteParameter("nroDocumento", nroDocumento));
+                cmd.Parameters.Add(new SQLiteParameter("nacionalidad", nacionalidad));
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 using (SQLiteDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
-                    {
-                        cmd.Parameters.Add(new SQLiteParameter("nroDocumento", nroDocumento));
+                    {                       
                         cro = int.Parse(dr["IDParticipante"].ToString());
                     }
                 }
@@ -175,14 +181,17 @@ namespace PuntuArte.ConexionDDBB
             return cro;
         }
 
-        public bool eliminarParticipante(int idParticipante)
+        //Se eliminara jurado de Participantes y de todas las tablas relacionadas
+        public bool eliminarJurado(int idParticipante)
         {
             bool respuesta = true;
 
             using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
             {
                 conexion_.Open();
-                string query = "Delete from Participantes where IDParticipante = @idParticipante";
+
+                //Elimina de Jurado_Categoria_Puntuacion donde esta relacionada
+                string query = "DELETE FROM Jurado_Categoria_Puntuacion WHERE IDParticipante=@idParticipante";
 
                 SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
                 cmd.Parameters.Add(new SQLiteParameter("idParticipante", idParticipante));
@@ -190,6 +199,21 @@ namespace PuntuArte.ConexionDDBB
                 if (cmd.ExecuteNonQuery() < 1)
                 {
                     respuesta = false;
+                }
+
+                //Elimina de Participantes
+                query = "DELETE FROM Participantes WHERE IDParticipante = @idParticipante";
+
+                SQLiteCommand cmd2 = new SQLiteCommand(query, conexion_);
+                cmd2.Parameters.Add(new SQLiteParameter("idParticipante", idParticipante));
+                cmd2.CommandType = System.Data.CommandType.Text;
+                if (cmd2.ExecuteNonQuery() < 1)
+                {
+                    respuesta = false;
+                }
+                else
+                {
+                    respuesta = true;
                 }
             }
             return respuesta;

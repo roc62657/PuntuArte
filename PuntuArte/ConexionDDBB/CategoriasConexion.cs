@@ -313,6 +313,37 @@ namespace PuntuArte.ConexionDDBB
 
         }
 
+        //Se utilizará para Jurados, se le mostraran las categorias que actualmente puedan ser calificadas, es decis que ya posean items de puntuacion
+        public List<Categorias> obtenerCategoriaHabilitadasParaCalificar()
+        {
+            List<Categorias> listCategorias = new List<Categorias>();
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "SELECT DISTINCT ct.* from Categorias ct INNER JOIN Categoria_Puntuacion ctp ON ct.IDCategoria = ctp.IDCategoria;";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                using (SQLiteDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        listCategorias.Add(new Categorias()
+                        {
+                            IDCategoria = int.Parse(dr["IDCategoria"].ToString()),
+                            Nombre = dr["Nombre"].ToString(),
+                            RitmoMusical = dr["RitmoMusical"].ToString(),
+                            Detalle = dr["Detalle"].ToString(),
+
+                        });
+                    }
+                }
+            }
+            return listCategorias;
+        }
+
+
     }
 
 }
