@@ -25,135 +25,103 @@ namespace PuntuArte.Formularios
             mostrarParticipantes();
         }
 
-        private void guardarCategoria_Click(object sender, EventArgs e)
+        private bool validarDatosAGuardar()
         {
-            
-            Participantes participante = new Participantes()
-            {
-                Nombre = tbNombreParticipante.Text,
-                Apellido = tbApellidoParticipante.Text,
-                TipoDocumento = tbTipoDocParticipante.Text,
-                NroDocumento = tbNroDocParticipante.Text,
-                Nacionalidad = tbNacionalidadParticipante.Text,
-                NroTelefono = tbTelefonoParticipante.Text,
-                Rol = "Jurado"
-            };
-
-            bool respuesta = false;
-            if (tbIdParticipante.Text == "") // es nuevo si no tiene ID
-            {
-                respuesta = ParticipantesConexion.Instancia.guardarParticipante(participante);
-                int idParticipanteNuevo = ParticipantesConexion.Instancia.obtenerIDParticipantePorDocumento(tbNroDocParticipante.Text);               
-                tbIdParticipante.Text = idParticipanteNuevo.ToString(); 
+            if (tbNombreParticipante.Text=="" ||
+                tbApellidoParticipante.Text == ""||
+                tbNacionalidadParticipante.Text == "" ||
+                tbNroDocParticipante.Text == ""
+                ){                
+                MessageBox.Show("Los campos NOMBRE, APELLIDO, PAIS ORIGEN y NUMERO DE DOCUMENTO son obligatorios, por favor valide los mismos y vuelva a intentar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
             }
             else
             {
-                participante.IDParticipante = int.Parse(tbIdParticipante.Text);
-                respuesta = ParticipantesConexion.Instancia.actualizarParticipante(participante);
+               int idParticipante = ParticipantesConexion.Instancia.obtenerIDParticipanteJuradoPorDocumentoYNacionalidad(tbNroDocParticipante.Text,tbNacionalidadParticipante.Text);
+                if( idParticipante >= 0)
+                {
+                    MessageBox.Show("El jurado que desea crear ya existe, por favor valide los mismos y vuelva a intentar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
             }
-
-            bABMCategoriasPart.Text = "Agregar Categorias";
-            bABMCategoriasPart.Visible = true;
-            leyendaHabCateg.Visible = false;
-            bABMCategoriasPart.Enabled = true;
-            labelCatAg.Enabled = true;
-            cbCategorias.Enabled = true;
-            llenarListaCategorias();
-
-            //Recarga grilla
-            if (respuesta)
-                mostrarParticipantes();
-
-            ////Limpia controles e inhabilita sector alta y modificacion
-            //gbParticipantes.Enabled = false;
-            //tbNombreParticipante.Text = "";
-            //tbApellidoParticipante.Text = "";
-            //tbTipoDocParticipante.Text = "";
-            //tbNroDocParticipante.Text = "";
-            //tbNacionalidadParticipante.Text = "";
-            //tbTelefonoParticipante.Text = "";
-            //cbCategorias.Text = "";
-            //guardarParticipante.Enabled = false;
+            
+            return true;
         }
 
-        private void btnCrearCategoria_Click(object sender, EventArgs e)
+        private void guardarCategoria_Click(object sender, EventArgs e)
         {
-            gbParticipantes.Enabled = true;
-            tbNombreParticipante.Text = "";
-            tbApellidoParticipante.Text = "";
-            tbTipoDocParticipante.Text = "";
-            tbNroDocParticipante.Text = "";
-            tbNacionalidadParticipante.Text = "";
-            tbTelefonoParticipante.Text = "";
-            bABMCategoriasPart.Text = "Agregar Categoria";
-            bABMCategoriasPart.Visible = true;
-            bABMCategoriasPart.Enabled = false;
-            leyendaHabCateg.Visible = true;
-            guardarParticipante.Enabled = true;
-            labelCatAg.Enabled = false;
-            cbCategorias.Enabled = false;
-            listaCategoriasDeJurado.DataSource = null;
-            tbIdParticipante.Text = "";
+            if (validarDatosAGuardar()) { 
+                Participantes participante = new Participantes()
+                {
+                    Nombre = tbNombreParticipante.Text,
+                    Apellido = tbApellidoParticipante.Text,
+                    TipoDocumento = tbTipoDocParticipante.Text,
+                    NroDocumento = tbNroDocParticipante.Text,
+                    Nacionalidad = tbNacionalidadParticipante.Text,
+                    NroTelefono = tbTelefonoParticipante.Text,
+                    Rol = "Jurado"
+                };
 
+                bool respuesta = false;
+                if (tbIdParticipante.Text == "") // es nuevo si no tiene ID
+                {
+                    int dioAlta= ParticipantesConexion.Instancia.guardarParticipante(participante);
+                    if (dioAlta != -1)
+                    {
+                        tbIdParticipante.Text = dioAlta.ToString();
+                        respuesta = true;
+                    }
+                    
+                }
+                else
+                {
+                    participante.IDParticipante = int.Parse(tbIdParticipante.Text);
+                    respuesta = ParticipantesConexion.Instancia.actualizarParticipante(participante);                   
+                }
+
+
+                bABMCategoriasPart.Text = "Agregar Categorias";
+                bABMCategoriasPart.Visible = true;
+                leyendaHabCateg.Visible = false;
+                bABMCategoriasPart.Enabled = true;
+                labelCatAg.Enabled = true;
+                cbCategorias.Enabled = true;
+                llenarListaCategorias();
+
+                //Recarga grilla si no dio error
+                if (!respuesta)
+                {
+                    MessageBox.Show("Ha ocurrido un error, por favor valide los datos ingresados.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    mostrarParticipantes();
+                }
+
+                //Bloqueo usuario para su creacion
+                guardarParticipante.Enabled = false;
+                tbNombreParticipante.Enabled = false;
+                tbApellidoParticipante.Enabled = false;
+                tbTipoDocParticipante.Enabled = false;
+                tbNroDocParticipante.Enabled = false;
+                tbNacionalidadParticipante.Enabled = false;
+                tbTelefonoParticipante.Enabled = false;
+                cbCategorias.Text = "";
+            }
         }
 
-        private void tbNombreParticipante_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            validarDatosCargados();
-        }
-
-        private void tbApellidoParticipante_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            validarDatosCargados();
-        }
-
-        private void tbNacionalidadParticipante_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            validarDatosCargados();
-        }
-
-        private void tbTelefonoParticipante_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            validarDatosCargados();
-        }
-
-        private void tbTipoDocParticipante_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            validarDatosCargados();
-        }
-
-        private void tbNroDocParticipante_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            validarDatosCargados();
-        }
-
-        private void cbRolParticipante_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            validarDatosCargados();
-        }
+       
 
         ///////Custom
         public void mostrarParticipantes()
         {
             listaParticipantes.DataSource = null;
             listaParticipantes.DataSource = ParticipantesConexion.Instancia.obtenerParticipantes();
+            
 
         }
 
-        private void validarDatosCargados()
-        {
-            if (tbNombreParticipante.Text != "" &&
-                tbApellidoParticipante.Text != "" &&
-                tbTipoDocParticipante.Text != "" &&
-                tbNroDocParticipante.Text != "" &&
-                tbNacionalidadParticipante.Text != "" &&
-                tbTelefonoParticipante.Text != "")
-                //cbCategorias.Text != "")
-                guardarParticipante.Enabled = true;
-            else
-                guardarParticipante.Enabled = false;
-        }
-
+        
         private void btnActualizarCategoria_Click(object sender, EventArgs e)
         {
             leyendaHabCateg.Visible = false;
@@ -215,9 +183,49 @@ namespace PuntuArte.Formularios
             
         }
 
+        //Se eliminara el Jurado seleccionado
         private void btnEliminarParticipante_Click(object sender, EventArgs e)
         {
-
+            leyendaHabCateg.Visible = false;
+            int selectedRowCount = listaParticipantes.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount == 1)
+            {
+                gbParticipantes.Enabled = true;
+                DataGridViewRow row = listaParticipantes.SelectedRows[0];
+                tbIdParticipante.Text = row.Cells[0].Value.ToString();
+                bool respuesta = ParticipantesConexion.Instancia.eliminarJurado(int.Parse(tbIdParticipante.Text));
+                if (respuesta)
+                {
+                    MessageBox.Show("Jurado eliminado correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Ha ocurrido un error, por favor intente mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                gbParticipantes.Enabled = false;
+                tbNombreParticipante.Text = "";
+                tbApellidoParticipante.Text = "";
+                tbTipoDocParticipante.Text = "";
+                tbNroDocParticipante.Text = "";
+                tbNacionalidadParticipante.Text = "";
+                tbTelefonoParticipante.Text = "";
+                btnActualizarParticipante.Enabled = false;
+                guardarParticipante.Enabled = false;
+                MessageBox.Show("Debe seleccionar una fila para eliminar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            listaParticipantes.DataSource = ParticipantesConexion.Instancia.obtenerParticipantes();
+            gbParticipantes.Enabled = false;
+            tbNombreParticipante.Text = "";
+            tbApellidoParticipante.Text = "";
+            tbTipoDocParticipante.Text = "";
+            tbNroDocParticipante.Text = "";
+            tbNacionalidadParticipante.Text = "";
+            tbTelefonoParticipante.Text = "";
+            btnActualizarParticipante.Enabled = true;
+            guardarParticipante.Enabled = false;
         }
 
         private void listaParticipantes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -230,6 +238,8 @@ namespace PuntuArte.Formularios
 
         }
      
+
+
         private void tbIdParticipante_TextChanged(object sender, EventArgs e)
         {
 
@@ -238,7 +248,7 @@ namespace PuntuArte.Formularios
         private void button3_Click(object sender, EventArgs e)
         {
             int idCategoria = int.Parse(tdIdCategoria.Text);
-            int idParticipante = int.Parse(tdIdCategoria.Text);
+            int idParticipante = int.Parse(tbIdParticipante.Text);
             
             List<CategoriaPuntuacion> listCategoriaPuntuacion = CategoriaPuntuacionConexion.Instancia.obtenerCategoriaPuntuacionPorIDCategoria(idCategoria);
             JuradoCategoriaPuntuacion juradoCategoriaPuntuacion = new JuradoCategoriaPuntuacion();
@@ -257,8 +267,8 @@ namespace PuntuArte.Formularios
         }
 
         private void llenarListaCategorias()
-        {
-            cbCategorias.DataSource = CategoriasConexion.Instancia.obtenerCategorias();
+        {            
+            cbCategorias.DataSource = CategoriasConexion.Instancia.obtenerCategoriaHabilitadasParaCalificar();
             cbCategorias.DisplayMember = "Nombre";
             cbCategorias.ValueMember = "IDCategoria";
         }
@@ -275,6 +285,35 @@ namespace PuntuArte.Formularios
             Categorias categoriaSeleccionada = (Categorias)cbCategorias.SelectedItem;
             tdIdCategoria.Text = categoriaSeleccionada.IDCategoria.ToString();
         }
+
+        private void btnCrearJurado_Click(object sender, EventArgs e)
+        {
+            gbParticipantes.Enabled = true;
+            tbNombreParticipante.Text = "";
+            tbApellidoParticipante.Text = "";
+            tbTipoDocParticipante.Text = "";
+            tbNroDocParticipante.Text = "";
+            tbNacionalidadParticipante.Text = "";
+            tbTelefonoParticipante.Text = "";
+            bABMCategoriasPart.Text = "Agregar Categoria";
+            bABMCategoriasPart.Visible = true;
+            bABMCategoriasPart.Enabled = false;
+            leyendaHabCateg.Visible = true;
+            guardarParticipante.Enabled = true;
+            labelCatAg.Enabled = false;
+            cbCategorias.Enabled = false;
+            listaCategoriasDeJurado.DataSource = null;
+            tbIdParticipante.Text = "";
+
+            tbNombreParticipante.Enabled = true;
+            tbApellidoParticipante.Enabled = true;
+            tbTipoDocParticipante.Enabled = true; ;
+            tbNroDocParticipante.Enabled = true;
+            tbNacionalidadParticipante.Enabled = true;
+            tbTelefonoParticipante.Enabled = true;
+
+        }
+
     }
     
 }

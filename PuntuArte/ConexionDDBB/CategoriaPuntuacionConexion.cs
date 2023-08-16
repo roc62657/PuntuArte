@@ -79,8 +79,5 @@ namespace PuntuArte.ConexionDDBB
             return listCategoriaPuntuacion;
         }
 
-
-
-
     }
 }
