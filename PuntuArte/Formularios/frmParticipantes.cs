@@ -62,21 +62,20 @@ namespace PuntuArte.Formularios
                     Rol = "Jurado"
                 };
 
-                bool respuesta = false;
+                int respuestaId = 0;
                 if (tbIdParticipante.Text == "") // es nuevo si no tiene ID
                 {
-                    int dioAlta= ParticipantesConexion.Instancia.guardarParticipante(participante);
-                    if (dioAlta != -1)
+                    respuestaId = ParticipantesConexion.Instancia.guardarParticipante(participante);
+                    if (respuestaId > 0) //no es 0, ni -1
                     {
-                        tbIdParticipante.Text = dioAlta.ToString();
-                        respuesta = true;
+                        tbIdParticipante.Text = respuestaId.ToString();
                     }
                     
                 }
                 else
                 {
                     participante.IDParticipante = int.Parse(tbIdParticipante.Text);
-                    respuesta = ParticipantesConexion.Instancia.actualizarParticipante(participante);                   
+                    respuestaId = ParticipantesConexion.Instancia.actualizarParticipante(participante);                   
                 }
 
 
@@ -89,7 +88,7 @@ namespace PuntuArte.Formularios
                 llenarListaCategorias();
 
                 //Recarga grilla si no dio error
-                if (!respuesta)
+                if (respuestaId <= 0) //es 0 ó -1
                 {
                     MessageBox.Show("Ha ocurrido un error, por favor valide los datos ingresados.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

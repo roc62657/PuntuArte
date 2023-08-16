@@ -427,7 +427,7 @@ namespace PuntuArte.Formularios
         {
             if (participante != null)
             {
-                bool rta = false;
+                int rta = 0;
 
                 if (participante.IDParticipante == 0) //si trae Id es de edicion
                     rta = ParticipantesConexion.Instancia.guardarParticipante(participante);
@@ -435,7 +435,7 @@ namespace PuntuArte.Formularios
                     rta = ParticipantesConexion.Instancia.actualizarParticipante(participante);
 
 
-                if (rta)
+                if (rta != 0)
                 {
                     Companias companiaSeleccionada = (Companias)cbCompanias.SelectedItem;
                     Categorias categoriaSeleccionada = (Categorias)cbCategoriasPorCompania.SelectedItem;
@@ -468,9 +468,7 @@ namespace PuntuArte.Formularios
             {
                 bool rta = false;
 
-                //TODO:Eliminar relaciones
-                //rta = ParticipantesConexion.Instancia.eliminarParticipante(participante);
-                //rta = ParticipantesConexion.Instancia.eliminarParticipante(participante);
+                //Elimina participante y Participante_Compania_Categoria
                 rta = ParticipantesConexion.Instancia.eliminarParticipante(participante);
 
                 if (rta)

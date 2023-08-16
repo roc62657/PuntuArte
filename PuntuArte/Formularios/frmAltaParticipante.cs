@@ -35,6 +35,8 @@ namespace PuntuArte.Formularios
             tNroDocParticipante.Text = participante.NroDocumento;
             tNacionalidadParticipante.Text = participante.Nacionalidad;
             tNroTelefonoParticipante.Text = participante.NroTelefono;
+
+            bEliminarParticipante.Visible = true;
         }
 
         private void bAltaParticipante_Click(object sender, EventArgs e)
@@ -49,7 +51,7 @@ namespace PuntuArte.Formularios
             {
                 Participantes participantes = new Participantes()
                 {
-                    IDParticipante = tIdParticipante.Text == "0" ? 0 : int.Parse(tIdParticipante.Text),
+                    IDParticipante = tIdParticipante.Text == "" || tIdParticipante.Text == "0" ? 0 : int.Parse(tIdParticipante.Text),
                     Nombre = tNombreParticipante.Text,
                     Apellido = tApellidoParticipante.Text,
                     TipoDocumento = tTipoDocParticipante.Text,
@@ -75,7 +77,7 @@ namespace PuntuArte.Formularios
 
         private void bEliminarParticipante_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea eliminar este participante?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            if (MessageBox.Show("Desea eliminar este participante?. En caso de aceptar, se eliminará el participante y todas las categorias asociadas", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
             {
                 eliminarParticipante(int.Parse(tIdParticipante.Text));
                 this.Dispose();

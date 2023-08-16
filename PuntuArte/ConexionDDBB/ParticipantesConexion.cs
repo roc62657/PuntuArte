@@ -93,9 +93,9 @@ namespace PuntuArte.ConexionDDBB
         }
 
 
-        public bool actualizarParticipante(Participantes participante)
+        public int actualizarParticipante(Participantes participante)
         {
-            bool respuesta = true;
+            int respuesta = participante.IDParticipante;
 
             using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
             {
@@ -114,7 +114,7 @@ namespace PuntuArte.ConexionDDBB
                 cmd.CommandType = System.Data.CommandType.Text;
                 if (cmd.ExecuteNonQuery() < 1)
                 {
-                    respuesta = false;
+                    respuesta = 0;
                 }
             }
             return respuesta;
@@ -214,6 +214,38 @@ namespace PuntuArte.ConexionDDBB
                 else
                 {
                     respuesta = true;
+                }
+            }
+            return respuesta;
+        }
+
+        //Se eliminara Participante y de todas las tablas relacionadas
+        public bool eliminarParticipante(int idParticipante)
+        {
+            bool respuesta = true;
+
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+
+                //Elimina de Participante_Compania_Categoria donde esta relacionada
+                string query = "DELETE FROM Participante_Compania_Categoria WHERE IDParticipante=@idParticipante";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idParticipante", idParticipante));
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteNonQuery(); //Solo ejecuta y si no borra nada esta bien
+                
+
+                //Elimina de Participantes
+                query = "DELETE FROM Participantes WHERE IDParticipante = @idParticipante";
+
+                SQLiteCommand cmd2 = new SQLiteCommand(query, conexion_);
+                cmd2.Parameters.Add(new SQLiteParameter("idParticipante", idParticipante));
+                cmd2.CommandType = System.Data.CommandType.Text;
+                if (cmd2.ExecuteNonQuery() < 1)
+                {
+                    respuesta = false;
                 }
             }
             return respuesta;

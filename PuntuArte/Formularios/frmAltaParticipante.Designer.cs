@@ -190,15 +190,18 @@
             // 
             // bEliminarParticipante
             // 
-            this.bEliminarParticipante.BackColor = System.Drawing.Color.DarkRed;
-            this.bEliminarParticipante.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.bEliminarParticipante.BackColor = System.Drawing.Color.Brown;
+            this.bEliminarParticipante.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
+            this.bEliminarParticipante.FlatAppearance.BorderSize = 0;
+            this.bEliminarParticipante.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bEliminarParticipante.ForeColor = System.Drawing.Color.White;
             this.bEliminarParticipante.Location = new System.Drawing.Point(121, 336);
             this.bEliminarParticipante.Name = "bEliminarParticipante";
             this.bEliminarParticipante.Size = new System.Drawing.Size(98, 31);
             this.bEliminarParticipante.TabIndex = 23;
-            this.bEliminarParticipante.Text = "Guardar";
+            this.bEliminarParticipante.Text = "Eliminar";
             this.bEliminarParticipante.UseVisualStyleBackColor = false;
+            this.bEliminarParticipante.Visible = false;
             this.bEliminarParticipante.Click += new System.EventHandler(this.bEliminarParticipante_Click);
             // 
             // frmAltaParticipante
