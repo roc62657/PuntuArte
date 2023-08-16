@@ -43,6 +43,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.bCancelar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.tIdParticipante = new System.Windows.Forms.TextBox();
+            this.bEliminarParticipante = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tNombreParticipante
@@ -178,12 +180,35 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "Datos del Participante";
             // 
+            // tIdParticipante
+            // 
+            this.tIdParticipante.Location = new System.Drawing.Point(609, 83);
+            this.tIdParticipante.Name = "tIdParticipante";
+            this.tIdParticipante.Size = new System.Drawing.Size(94, 20);
+            this.tIdParticipante.TabIndex = 22;
+            this.tIdParticipante.Visible = false;
+            // 
+            // bEliminarParticipante
+            // 
+            this.bEliminarParticipante.BackColor = System.Drawing.Color.DarkRed;
+            this.bEliminarParticipante.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.bEliminarParticipante.ForeColor = System.Drawing.Color.White;
+            this.bEliminarParticipante.Location = new System.Drawing.Point(121, 336);
+            this.bEliminarParticipante.Name = "bEliminarParticipante";
+            this.bEliminarParticipante.Size = new System.Drawing.Size(98, 31);
+            this.bEliminarParticipante.TabIndex = 23;
+            this.bEliminarParticipante.Text = "Guardar";
+            this.bEliminarParticipante.UseVisualStyleBackColor = false;
+            this.bEliminarParticipante.Click += new System.EventHandler(this.bEliminarParticipante_Click);
+            // 
             // frmAltaParticipante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.ClientSize = new System.Drawing.Size(729, 416);
+            this.Controls.Add(this.bEliminarParticipante);
+            this.Controls.Add(this.tIdParticipante);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.label6);
@@ -225,5 +250,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button bCancelar;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tIdParticipante;
+        private System.Windows.Forms.Button bEliminarParticipante;
     }
 }

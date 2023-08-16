@@ -28,6 +28,38 @@ namespace PuntuArte.ConexionDDBB
             }
         }
 
+        public Participantes obtenerParticipantePorId(int idParticipante)
+        {
+            Participantes participante = new Participantes();
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Select * from Participantes where IDParticipante = @idParticipante";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idParticipante", idParticipante));
+                cmd.CommandType = System.Data.CommandType.Text;
+                using (SQLiteDataReader dr = cmd.ExecuteReader())
+                {
+
+                    while (dr.Read())
+                    {
+                        participante.IDParticipante = int.Parse(dr["IDParticipante"].ToString());
+                        participante.Nombre = dr["Nombre"].ToString();
+                        participante.Apellido = dr["Apellido"].ToString();
+                        participante.TipoDocumento = dr["TipoDocumento"].ToString();
+                        participante.NroDocumento = dr["NroDocumento"].ToString();
+                        participante.Nacionalidad = dr["Nacionalidad"].ToString();
+                        participante.NroTelefono = dr["NroTelefono"].ToString();
+                        participante.Rol = dr["Rol"].ToString();
+                    };
+
+                }
+
+            }
+            return participante;
+        }
+
         public bool guardarParticipante(Participantes participante)
         {
             bool respuesta = true;
@@ -143,25 +175,24 @@ namespace PuntuArte.ConexionDDBB
             return cro;
         }
 
-        public bool eliminarParticipante(string Participante)
+        public bool eliminarParticipante(int idParticipante)
         {
             bool respuesta = true;
 
-            //using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
-            //{
-            //    conexion_.Open();
-            //    string query = "Delete from  Categorias where IDCategoria = @idCategoria";
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Delete from Participantes where IDParticipante = @idParticipante";
 
-            //    SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
-            //    cmd.Parameters.Add(new SQLiteParameter("idCategoria", categoria));
-            //    cmd.CommandType = System.Data.CommandType.Text;
-            //    if (cmd.ExecuteNonQuery() < 1)
-            //    {
-            //        respuesta = false;
-            //    }
-            //}
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idParticipante", idParticipante));
+                cmd.CommandType = System.Data.CommandType.Text;
+                if (cmd.ExecuteNonQuery() < 1)
+                {
+                    respuesta = false;
+                }
+            }
             return respuesta;
-
         }
 
 

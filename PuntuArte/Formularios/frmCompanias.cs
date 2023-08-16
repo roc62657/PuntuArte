@@ -361,6 +361,7 @@ namespace PuntuArte.Formularios
             listaParticipantesInscriptos.DataSource = lParticipantesNoAsignadosACategoriaCompania;
 
             bAgregarParticipante.Enabled = lParticipantesNoAsignadosACategoriaCompania.Count > 0 ? true : false;
+            bModificacionParticipante.Enabled = lParticipantesNoAsignadosACategoriaCompania.Count > 0 ? true : false;
 
             List<Participantes> lParticipantesAsignadosACategoriaCompania = ParticipantesConexion.Instancia.obtenerParticipantesAsignadosACategoriaCompania(idCompania, idCategoria);
             listaParticipantesSeleccionadosParaCategoria.DataSource = null;
@@ -417,19 +418,67 @@ namespace PuntuArte.Formularios
         private void bAltaParticipante_Click(object sender, EventArgs e)
         {
             frmAltaParticipante formAltaParticipante = new frmAltaParticipante();
-            formAltaParticipante.crearParticipante += new frmAltaParticipante.agregarParticipante(crearParticipante);
+            formAltaParticipante.crearModificarParticipante += new frmAltaParticipante.agregarParticipante(crearModificarParticipante);
             formAltaParticipante.ShowDialog();
 
         }
 
-        public void crearParticipante(Participantes participante)
+        public void crearModificarParticipante(Participantes participante)
         {
-            bool rta = ParticipantesConexion.Instancia.guardarParticipante(participante);
-            if (rta)
+            if (participante != null)
             {
-                Companias companiaSeleccionada = (Companias)cbCompanias.SelectedItem;
-                Categorias categoriaSeleccionada = (Categorias)cbCategoriasPorCompania.SelectedItem;
-                cargaDeDatosGrillasParticipantes(companiaSeleccionada.IDCompania, categoriaSeleccionada.IDCategoria);
+                bool rta = false;
+
+                if (participante.IDParticipante == 0) //si trae Id es de edicion
+                    rta = ParticipantesConexion.Instancia.guardarParticipante(participante);
+                else
+                    rta = ParticipantesConexion.Instancia.actualizarParticipante(participante);
+
+
+                if (rta)
+                {
+                    Companias companiaSeleccionada = (Companias)cbCompanias.SelectedItem;
+                    Categorias categoriaSeleccionada = (Categorias)cbCategoriasPorCompania.SelectedItem;
+                    cargaDeDatosGrillasParticipantes(companiaSeleccionada.IDCompania, categoriaSeleccionada.IDCategoria);
+                }
+            }
+        }
+
+        private void bModificacionParticipante_Click(object sender, EventArgs e)
+        {
+            int cantidadColumnasSeleccionadas = listaParticipantesInscriptos.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (cantidadColumnasSeleccionadas == 1)
+            {
+                DataGridViewRow selectRow = listaParticipantesInscriptos.SelectedRows[0];
+
+                frmAltaParticipante formAltaParticipante = new frmAltaParticipante(int.Parse(selectRow.Cells[0].Value.ToString())); //IDCategoriaSeleccionada
+                formAltaParticipante.crearModificarParticipante += new frmAltaParticipante.agregarParticipante(crearModificarParticipante);
+                formAltaParticipante.eliminarParticipante += new frmAltaParticipante.borrarParticipante(eliminarParticipante);
+                formAltaParticipante.ShowDialog(); 
+            }
+            else
+            {
+                MessageBox.Show("Se debe seleccionar un participante de la lista", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        public void eliminarParticipante(int participante)
+        {
+            if (participante != 0)
+            {
+                bool rta = false;
+
+                //TODO:Eliminar relaciones
+                //rta = ParticipantesConexion.Instancia.eliminarParticipante(participante);
+                //rta = ParticipantesConexion.Instancia.eliminarParticipante(participante);
+                rta = ParticipantesConexion.Instancia.eliminarParticipante(participante);
+
+                if (rta)
+                {
+                    Companias companiaSeleccionada = (Companias)cbCompanias.SelectedItem;
+                    Categorias categoriaSeleccionada = (Categorias)cbCategoriasPorCompania.SelectedItem;
+                    cargaDeDatosGrillasParticipantes(companiaSeleccionada.IDCompania, categoriaSeleccionada.IDCategoria);
+                }
             }
         }
     }

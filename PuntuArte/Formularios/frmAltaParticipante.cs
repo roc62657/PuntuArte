@@ -1,4 +1,5 @@
-﻿using PuntuArte.Modelo;
+﻿using PuntuArte.ConexionDDBB;
+using PuntuArte.Modelo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +15,26 @@ namespace PuntuArte.Formularios
     public partial class frmAltaParticipante : Form
     {
         public delegate void agregarParticipante(Participantes participante);
-        public event agregarParticipante crearParticipante;
+        public delegate void borrarParticipante(int participante);
+        public event agregarParticipante crearModificarParticipante;
+        public event borrarParticipante eliminarParticipante;
         public frmAltaParticipante()
         {
             InitializeComponent();
+        }
+
+        public frmAltaParticipante(int idParticipante)
+        {
+            InitializeComponent();
+
+            Participantes participante = ParticipantesConexion.Instancia.obtenerParticipantePorId(idParticipante);
+            tIdParticipante.Text = participante.IDParticipante.ToString();
+            tNombreParticipante.Text = participante.Nombre;
+            tApellidoParticipante.Text = participante.Apellido;
+            tTipoDocParticipante.Text = participante.TipoDocumento;
+            tNroDocParticipante.Text = participante.NroDocumento;
+            tNacionalidadParticipante.Text = participante.Nacionalidad;
+            tNroTelefonoParticipante.Text = participante.NroTelefono;
         }
 
         private void bAltaParticipante_Click(object sender, EventArgs e)
@@ -32,6 +49,7 @@ namespace PuntuArte.Formularios
             {
                 Participantes participantes = new Participantes()
                 {
+                    IDParticipante = tIdParticipante.Text == "0" ? 0 : int.Parse(tIdParticipante.Text),
                     Nombre = tNombreParticipante.Text,
                     Apellido = tApellidoParticipante.Text,
                     TipoDocumento = tTipoDocParticipante.Text,
@@ -40,7 +58,8 @@ namespace PuntuArte.Formularios
                     NroTelefono = tNroTelefonoParticipante.Text,
                     Rol = "Participante"
                 };
-                crearParticipante(participantes);
+
+                crearModificarParticipante(participantes);
                 this.Dispose();
             }
             else
@@ -52,6 +71,15 @@ namespace PuntuArte.Formularios
         private void bCancelar_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void bEliminarParticipante_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Desea eliminar este participante?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            {
+                eliminarParticipante(int.Parse(tIdParticipante.Text));
+                this.Dispose();
+            }
         }
     }
 }
