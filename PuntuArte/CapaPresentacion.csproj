@@ -66,12 +66,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConexionDDBB\ItemsPuntuacionConexion.cs" />
     <Compile Include="ConexionDDBB\JuradoCategoriaPuntuacionConexion.cs" />
     <Compile Include="ConexionDDBB\CategoriaPuntuacionConexion.cs" />
     <Compile Include="ConexionDDBB\CategoriasConexion.cs" />
     <Compile Include="ConexionDDBB\CompaniasConexion.cs" />
     <Compile Include="ConexionDDBB\ParticipantesConexion.cs" />
     <Compile Include="DTOs\ParticipantesDTO.cs" />
+    <Compile Include="Formularios\frmABMItemPuntuacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmABMItemPuntuacion.Designer.cs">
+      <DependentUpon>frmABMItemPuntuacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmABMParticipante.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +128,9 @@
     <Compile Include="Modelo\PuntuacionesFinales.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\frmABMItemPuntuacion.resx">
+      <DependentUpon>frmABMItemPuntuacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmABMParticipante.resx">
       <DependentUpon>frmABMParticipante.cs</DependentUpon>
     </EmbeddedResource>

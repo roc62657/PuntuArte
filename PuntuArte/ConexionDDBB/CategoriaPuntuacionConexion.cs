@@ -33,11 +33,50 @@ namespace PuntuArte.ConexionDDBB
             }
         }
 
-        public bool guardarCategoriaPuntuacion(CategoriaPuntuacion categoriaPuntuacion)
+        public int guardarCategoriaPuntuacion(int idCategoria, int idItemPuntuacion)
+        {
+            int respuesta = 0;
+
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Insert into Categoria_Puntuacion (IDCategoria,IDItemPuntuacion) values (@idCategoria,@idItemPuntuacion)";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", idCategoria));
+                cmd.Parameters.Add(new SQLiteParameter("idItemPuntuacion", idItemPuntuacion));
+                cmd.CommandType = System.Data.CommandType.Text;
+                if (cmd.ExecuteNonQuery() < 1)
+                {
+                    respuesta = -1;
+                }
+                else
+                {
+                    respuesta = int.Parse(conexion_.LastInsertRowId.ToString());
+                }
+            }
+
+            return respuesta;
+        }
+
+        public bool eliminarCategoriaPuntuacion(int idCategoria, int idItemPuntuacion)
         {
             bool respuesta = true;
 
-            
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Delete from  Categoria_Puntuacion where IDCategoria = @idCategoria and IDItemPuntuacion = @idItemPuntuacion";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", idCategoria));
+                cmd.Parameters.Add(new SQLiteParameter("idItemPuntuacion", idItemPuntuacion));
+                cmd.CommandType = System.Data.CommandType.Text;
+                if (cmd.ExecuteNonQuery() < 1)
+                {
+                    respuesta = false;
+                }
+            }
             return respuesta;
 
         }
