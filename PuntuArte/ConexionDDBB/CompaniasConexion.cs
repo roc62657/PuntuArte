@@ -155,5 +155,37 @@ namespace PuntuArte.ConexionDDBB
             return compania;
         }
 
+        public bool borrarCompania(int idCompania)
+        {
+            bool respuesta = true;
+
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+
+                //Elimina de Participante_Compania_Categoria donde esta relacionada
+                string query = "delete from Compania_Categoria where IDCompania = @idCompania";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteNonQuery(); //No hace falta que borre algo
+               
+
+                //Elimina de Compania_Categoria
+                query = "delete from Companias where IDCompania = @idCompania";
+
+                SQLiteCommand cmd2 = new SQLiteCommand(query, conexion_);
+                cmd2.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
+                cmd2.CommandType = System.Data.CommandType.Text;
+                if (cmd2.ExecuteNonQuery() < 1)
+                {
+                    respuesta = false;
+                }
+            }
+            return respuesta;
+
+        }
+
     }
 }

@@ -93,6 +93,7 @@ namespace PuntuArte.Formularios
                 lDetalleDesc.Text = companiaSeleccionada.Detalle;
                 lNacionalidadDesc.Text = companiaSeleccionada.Nacionalidad;
                 bActualizarCompania.Visible = true;
+                bEliminarCompania.Visible = true;
 
                 cargaDeDatosGrillasCategorias(companiaSeleccionada.IDCompania);
             }
@@ -101,6 +102,7 @@ namespace PuntuArte.Formularios
                 lDetalleDesc.Text = "";
                 lNacionalidadDesc.Text = "";
                 bActualizarCompania.Visible = false;
+                bEliminarCompania.Visible = false;
 
                 deshabilitarTodosControles(); //deshabilita todas las secciones
             }
@@ -116,6 +118,20 @@ namespace PuntuArte.Formularios
             tbNacionalidadCompania.Text = companiaSeleccionada.Nacionalidad;
             rbCrearActualizarCompania.Checked = true;
             rbCrearActualizarCompania.Text = "Modificar compañia";
+        }
+
+        private void bEliminarCompania_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Desea eliminar esta compañía?. En caso de aceptar, se eliminará la compañía y todas sus relaciones", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            {
+                Companias companiaSeleccionada = (Companias)cbCompanias.SelectedItem;
+                //TODO: consultar si ya tiene puntuaciones cargadas
+
+                CompaniasConexion.Instancia.borrarCompania(companiaSeleccionada.IDCompania);
+
+                mostrarCompanias();
+                habilitarSeleccionCompania();
+            }
         }
 
         ///////Custom
@@ -171,6 +187,7 @@ namespace PuntuArte.Formularios
 
             bGuardarCompania.Enabled = true;
             bActualizarCompania.Visible = false;
+            bEliminarCompania.Visible = false;
 
             rbCrearActualizarCompania.Checked = true;
         }
@@ -201,7 +218,7 @@ namespace PuntuArte.Formularios
             bGuardarCompania.Enabled = false;
 
             Companias companiaSeleccionada = (Companias)cbCompanias.SelectedItem;
-            if (companiaSeleccionada != null && companiaSeleccionada.IDCompania != -1) { bActualizarCompania.Visible = true; } else { bActualizarCompania.Visible = false; };
+            if (companiaSeleccionada != null && companiaSeleccionada.IDCompania != -1) { bActualizarCompania.Visible = true; bEliminarCompania.Visible = true; } else { bActualizarCompania.Visible = false; bEliminarCompania.Visible = false; };
 
             rbSeleccionarCompania.Checked = true;
             rbCrearActualizarCompania.Text = "Crear compañia";
@@ -482,5 +499,7 @@ namespace PuntuArte.Formularios
                 }
             }
         }
+
+        
     }
 }
