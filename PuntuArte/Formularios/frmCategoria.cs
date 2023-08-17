@@ -97,7 +97,7 @@ namespace PuntuArte.Formularios
                 DataGridViewRow selectRowCategoria = listaCategorias.SelectedRows[0];
                 DataGridViewRow selectRowItem = listaItemsDisponibles.SelectedRows[0];
 
-                CategoriaPuntuacionConexion.Instancia.guardarCategoriaPuntuacion( int.Parse(selectRowCategoria.Cells[0].Value.ToString()), int.Parse(selectRowItem.Cells[0].Value.ToString())); //IDCategoriaSeleccionada, IDItemSeleccionado
+                int idItem = CategoriaPuntuacionConexion.Instancia.guardarCategoriaPuntuacion( int.Parse(selectRowCategoria.Cells[0].Value.ToString()), int.Parse(selectRowItem.Cells[0].Value.ToString())); //IDCategoriaSeleccionada, IDItemSeleccionado
 
                 cargaDeDatosGrillasItems(int.Parse(selectRowCategoria.Cells[0].Value.ToString()));
             }
@@ -216,7 +216,7 @@ namespace PuntuArte.Formularios
 
         }
 
-        public void cargaDeDatosGrillasItems(int idCategoria)
+        public void cargaDeDatosGrillasItems(int idCategoria, int idItem = 0)
         {
             if (gbItemsPuntuacion.Enabled != true) gbItemsPuntuacion.Enabled = true;
 
@@ -225,6 +225,14 @@ namespace PuntuArte.Formularios
             listaItemsDisponibles.DataSource = lItemsPuntuacionNoAsignadosACategoria;
             bAgregarItem.Enabled = lItemsPuntuacionNoAsignadosACategoria.Count > 0 ? true : false;
             bModificacionItem.Enabled = lItemsPuntuacionNoAsignadosACategoria.Count > 0 ? true : false;
+
+            //manda el selected al recien creado / modificado
+            if (idItem > 0)
+            {
+                int indice = lItemsPuntuacionNoAsignadosACategoria.FindIndex(a => a.IDItemPuntuacion == idItem);
+                listaItemsDisponibles.Rows[0].Selected = false;
+                listaItemsDisponibles.Rows[indice].Selected = true;
+            }
 
             List<ItemsPuntuacion> lItemsPuntuacionAsignadosACategoria = ItemsPuntuacionConexion.Instancia.obtenerItemsAsignadosACategoria(idCategoria); //IDCategoriaSeleccionada
             listaItemsAsociados.DataSource = null;
@@ -268,7 +276,7 @@ namespace PuntuArte.Formularios
                     if (cantidadColumnasSeleccionadasCategorias == 1)
                     {
                         DataGridViewRow selectRowCategoria = listaCategorias.SelectedRows[0];//IDCategoriaSeleccionada
-                        cargaDeDatosGrillasItems(int.Parse(selectRowCategoria.Cells[0].Value.ToString()));
+                        cargaDeDatosGrillasItems(int.Parse(selectRowCategoria.Cells[0].Value.ToString()), rta);
                     }
                 }
             }

@@ -372,7 +372,7 @@ namespace PuntuArte.Formularios
             }
         }
 
-        public void cargaDeDatosGrillasParticipantes(int idCompania, int idCategoria)
+        public void cargaDeDatosGrillasParticipantes(int idCompania, int idCategoria, int idParticipante = 0)
         {
             if (gbSelectionParticipantesPorCategoria.Enabled != true) gbSelectionParticipantesPorCategoria.Enabled = true;
 
@@ -382,6 +382,14 @@ namespace PuntuArte.Formularios
 
             bAgregarParticipante.Enabled = lParticipantesNoAsignadosACategoriaCompania.Count > 0 ? true : false;
             bModificacionParticipante.Enabled = lParticipantesNoAsignadosACategoriaCompania.Count > 0 ? true : false;
+
+            //Va a llevar al foco en el item que guardo o modifico
+            if (idParticipante > 0)
+            {
+                int indice = lParticipantesNoAsignadosACategoriaCompania.FindIndex(a => a.IDParticipante == idParticipante);
+                listaParticipantesInscriptos.Rows[0].Selected = false;
+                listaParticipantesInscriptos.Rows[indice].Selected = true;
+            }
 
             List<Participantes> lParticipantesAsignadosACategoriaCompania = ParticipantesConexion.Instancia.obtenerParticipantesAsignadosACategoriaCompania(idCompania, idCategoria);
             listaParticipantesSeleccionadosParaCategoria.DataSource = null;
@@ -459,7 +467,7 @@ namespace PuntuArte.Formularios
                 {
                     Companias companiaSeleccionada = (Companias)cbCompanias.SelectedItem;
                     Categorias categoriaSeleccionada = (Categorias)cbCategoriasPorCompania.SelectedItem;
-                    cargaDeDatosGrillasParticipantes(companiaSeleccionada.IDCompania, categoriaSeleccionada.IDCategoria);
+                    cargaDeDatosGrillasParticipantes(companiaSeleccionada.IDCompania, categoriaSeleccionada.IDCategoria, rta);
                 }
             }
         }
