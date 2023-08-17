@@ -55,6 +55,7 @@ namespace PuntuArte.Formularios
                 //Limpia controles e inhabilita sector alta y modificacion
                 habilitarSeleccionCompania();
                 rbSeleccionarCompania.Checked = true;
+                rbCrearActualizarCompania.Text = "Crear compañia";
             }
 
         }
@@ -114,6 +115,7 @@ namespace PuntuArte.Formularios
             tbDetalleCompania.Text = companiaSeleccionada.Detalle;
             tbNacionalidadCompania.Text = companiaSeleccionada.Nacionalidad;
             rbCrearActualizarCompania.Checked = true;
+            rbCrearActualizarCompania.Text = "Modificar compañia";
         }
 
         ///////Custom
@@ -202,6 +204,7 @@ namespace PuntuArte.Formularios
             if (companiaSeleccionada != null && companiaSeleccionada.IDCompania != -1) { bActualizarCompania.Visible = true; } else { bActualizarCompania.Visible = false; };
 
             rbSeleccionarCompania.Checked = true;
+            rbCrearActualizarCompania.Text = "Crear compañia";
         }
 
 
