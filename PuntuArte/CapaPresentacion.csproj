@@ -67,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionDDBB\ItemsPuntuacionConexion.cs" />
-    <Compile Include="ConexionDDBB\JuradoCategoriaPuntuacionConexion.cs" />
+    <Compile Include="ConexionDDBB\JuradoCategoriaConexion.cs" />
     <Compile Include="ConexionDDBB\CategoriaPuntuacionConexion.cs" />
     <Compile Include="ConexionDDBB\CategoriasConexion.cs" />
     <Compile Include="ConexionDDBB\CompaniasConexion.cs" />
@@ -120,8 +120,7 @@
     <Compile Include="Modelo\CompaniaCategoria.cs" />
     <Compile Include="Modelo\Companias.cs" />
     <Compile Include="Modelo\ItemsPuntuacion.cs" />
-    <Compile Include="Modelo\JuradoCategoriaPuntuacion.cs" />
-    <Compile Include="Modelo\ParticipanteCompania.cs" />
+    <Compile Include="Modelo\JuradoCategoria.cs" />
     <Compile Include="Modelo\ParticipanteCompaniaCategoria.cs" />
     <Compile Include="Modelo\Participantes.cs" />
     <Compile Include="Modelo\PuntuacionesDetalle.cs" />

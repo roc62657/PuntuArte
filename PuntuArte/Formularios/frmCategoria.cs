@@ -97,7 +97,7 @@ namespace PuntuArte.Formularios
                 DataGridViewRow selectRowCategoria = listaCategorias.SelectedRows[0];
                 DataGridViewRow selectRowItem = listaItemsDisponibles.SelectedRows[0];
 
-                int idItem = CategoriaPuntuacionConexion.Instancia.guardarCategoriaPuntuacion( int.Parse(selectRowCategoria.Cells[0].Value.ToString()), int.Parse(selectRowItem.Cells[0].Value.ToString())); //IDCategoriaSeleccionada, IDItemSeleccionado
+                bool rta = CategoriaPuntuacionConexion.Instancia.guardarCategoriaPuntuacion( int.Parse(selectRowCategoria.Cells[0].Value.ToString()), int.Parse(selectRowItem.Cells[0].Value.ToString())); //IDCategoriaSeleccionada, IDItemSeleccionado
 
                 cargaDeDatosGrillasItems(int.Parse(selectRowCategoria.Cells[0].Value.ToString()));
             }

@@ -9,7 +9,6 @@ namespace PuntuArte.Modelo
 {
     public class CompaniaCategoria
     {
-        public int IDCompaniaCategoria { get; set; }
         public int IDCompania { get; set; }
         public int IDCategoria { get; set; }
 

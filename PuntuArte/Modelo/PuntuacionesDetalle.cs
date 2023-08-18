@@ -10,10 +10,12 @@ namespace PuntuArte.Modelo
     public class PuntuacionesDetalle
     {
         public int IDPuntuacionDetalle { get; set; }
-        public int IDJuradoCatPuntuacion { get; set; }
-        public int IDCompaniaCategoria { get; set; }
-        public int Puntuacion { get; set; }
-        public string Observacion { get; set; }
+        public int IDPuntuacionFinal { get; set; }
+        public int IDJurado { get; set; }
+        public int IDCompania { get; set; }
+        public int IDCategoria { get; set; }
+        public int IDItemPuntuacion { get; set; }
+        public string Puntuacion { get; set; }
 
     }
 }

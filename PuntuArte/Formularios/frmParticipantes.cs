@@ -249,20 +249,13 @@ namespace PuntuArte.Formularios
             int idCategoria = int.Parse(tdIdCategoria.Text);
             int idParticipante = int.Parse(tbIdParticipante.Text);
             
-            List<CategoriaPuntuacion> listCategoriaPuntuacion = CategoriaPuntuacionConexion.Instancia.obtenerCategoriaPuntuacionPorIDCategoria(idCategoria);
-            JuradoCategoriaPuntuacion juradoCategoriaPuntuacion = new JuradoCategoriaPuntuacion();
-            foreach (CategoriaPuntuacion catp in listCategoriaPuntuacion)
-            {
-                juradoCategoriaPuntuacion.IDCategoriaPuntuacion = catp.IDCategoriaPuntuacion;
-                juradoCategoriaPuntuacion.IDParticipante = idParticipante;
-                bool result = JuradoCategoriaPuntuacionConexion.Instancia.guardarJuradoCategoriaPuntuacion(juradoCategoriaPuntuacion);
-                if (result)
-                {
-                    listaCategoriasDeJurado.DataSource = CategoriasConexion.Instancia.obtenerCategoriasPorJurado(idParticipante);
-                }
-            }
-
+            JuradoCategoria juradoCategoria = new JuradoCategoria() { IDCategoria = idCategoria , IDJurado = idParticipante };
             
+            bool result = JuradoCategoriaConexion.Instancia.guardarJuradoCategoria(juradoCategoria);
+            if (result)
+            {
+                listaCategoriasDeJurado.DataSource = CategoriasConexion.Instancia.obtenerCategoriasPorJurado(idParticipante);
+            }
         }
 
         private void llenarListaCategorias()

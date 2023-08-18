@@ -134,16 +134,16 @@ namespace PuntuArte.ConexionDDBB
         }
 
         //Sector de Jurados
-        public List<Categorias> obtenerCategoriasPorJurado(int idParticipante)
+        public List<Categorias> obtenerCategoriasPorJurado(int idJurado)
         {
             List<Categorias> listCategorias = new List<Categorias>();
             using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
             {
                 conexion_.Open();
-                string query = "select DISTINCT ct.* from Categorias ct INNER JOIN Categoria_Puntuacion ctp ON ct.IDCategoria = ctp.IDCategoria INNER join Jurado_Categoria_Puntuacion jctp ON ctp.IDCategoriaPuntuacion = jctp.IDCategoriaPuntuacion where jctp.IDParticipante= @idParticipante";
+                string query = "select DISTINCT ct.* from Categorias ct INNER JOIN Jurado_Categoria jct ON ct.IDCategoria = jct.IDCategoria where jct.IDJurado=@idJurado";
 
                 SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
-                cmd.Parameters.Add(new SQLiteParameter("idParticipante", idParticipante));
+                cmd.Parameters.Add(new SQLiteParameter("idJurado", idJurado));
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 using (SQLiteDataReader dr = cmd.ExecuteReader())

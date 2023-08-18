@@ -9,7 +9,6 @@ namespace PuntuArte.Modelo
 {
     public class CategoriaPuntuacion
     {
-        public int IDCategoriaPuntuacion { get; set; }
         public int IDCategoria { get; set; }
         public int IDItemPuntuacion { get; set; }
 

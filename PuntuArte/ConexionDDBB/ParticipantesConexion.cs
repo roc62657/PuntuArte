@@ -191,7 +191,7 @@ namespace PuntuArte.ConexionDDBB
                 conexion_.Open();
 
                 //Elimina de Jurado_Categoria_Puntuacion donde esta relacionada
-                string query = "DELETE FROM Jurado_Categoria_Puntuacion WHERE IDParticipante=@idParticipante";
+                string query = "DELETE FROM Jurado_Categoria WHERE IDJurado=@idParticipante";
 
                 SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
                 cmd.Parameters.Add(new SQLiteParameter("idParticipante", idParticipante));
