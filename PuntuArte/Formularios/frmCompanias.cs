@@ -138,14 +138,31 @@ namespace PuntuArte.Formularios
 
         public void mostrarCompanias()
         {
-            cbCompanias.DataSource = CompaniasConexion.Instancia.obtenerCompanias();
+            List<Companias> listCompanias = new List<Companias>();
+            listCompanias.Add(new Companias()
+            {
+                IDCompania = -1,
+                Nombre = "Selecciona Compañia o Crea una nueva si no existe",
+                Detalle = "",
+                Nacionalidad = "",
+            });
+            listCompanias.AddRange(CompaniasConexion.Instancia.obtenerCompanias());
+            cbCompanias.DataSource = listCompanias;
             cbCompanias.DisplayMember = "Nombre";
             cbCompanias.ValueMember = "IDCompania";
         }
 
         public void mostrarCompaniasConSeleccionYDetalle(int idCompaniaSeleccionada)
         {
-            List<Companias> lCompania = CompaniasConexion.Instancia.obtenerCompanias();
+            List<Companias> lCompania = new List<Companias>();
+            lCompania.Add(new Companias()
+            {
+                IDCompania = -1,
+                Nombre = "Selecciona Compañia o Crea una nueva si no existe",
+                Detalle = "",
+                Nacionalidad = "",
+            });
+            lCompania.AddRange(CompaniasConexion.Instancia.obtenerCompanias());
             cbCompanias.DataSource = lCompania;
             cbCompanias.DisplayMember = "Nombre";
             cbCompanias.ValueMember = "IDCompania";
@@ -157,7 +174,6 @@ namespace PuntuArte.Formularios
             cbCompanias.SelectedIndex = indice;
             lDetalleDesc.Text = compania.Detalle;
             lNacionalidadDesc.Text = compania.Nacionalidad;
-
 
         }
 

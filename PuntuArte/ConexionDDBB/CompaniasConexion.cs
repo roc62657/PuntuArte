@@ -92,15 +92,7 @@ namespace PuntuArte.ConexionDDBB
         public List<Companias> obtenerCompanias()
         {
             List<Companias> listCompanias = new List<Companias>();
-            listCompanias.Add(new Companias()
-            {
-                IDCompania = -1,
-                Nombre = "Seleccione Compañia o Creala si no existe",
-                Detalle = "",
-                Nacionalidad = "",
-            });
-
-
+            
             using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
             {
                 conexion_.Open();
@@ -185,6 +177,36 @@ namespace PuntuArte.ConexionDDBB
             }
             return respuesta;
 
+        }
+
+        public List<Companias> obtenerCompaniasEnCompetenciaPorCategoria(int idCategoria)
+        {
+            List<Companias> listCompanias = new List<Companias>();
+            
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "select c.* from Companias c INNER JOIN Compania_Categoria cc ON c.IDCompania = cc.IDCompania where cc.IDCategoria = @idCategoria";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", idCategoria));
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                using (SQLiteDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        listCompanias.Add(new Companias()
+                        {
+                            IDCompania = int.Parse(dr["IDCompania"].ToString()),
+                            Nombre = dr["Nombre"].ToString(),
+                            Detalle = dr["Detalle"].ToString(),
+                            Nacionalidad = dr["Nacionalidad"].ToString(),
+                        });
+                    }
+                }
+            }
+            return listCompanias;
         }
 
     }

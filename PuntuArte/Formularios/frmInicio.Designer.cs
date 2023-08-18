@@ -45,6 +45,7 @@ namespace PuntuArte.Formularios
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.pVisualizador = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.pMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pABM.SuspendLayout();
@@ -54,6 +55,7 @@ namespace PuntuArte.Formularios
             // pMenu
             // 
             this.pMenu.BackColor = System.Drawing.Color.MediumPurple;
+            this.pMenu.Controls.Add(this.button7);
             this.pMenu.Controls.Add(this.button2);
             this.pMenu.Controls.Add(this.button1);
             this.pMenu.Controls.Add(this.button3);
@@ -219,6 +221,21 @@ namespace PuntuArte.Formularios
             this.pVisualizador.Size = new System.Drawing.Size(1617, 811);
             this.pVisualizador.TabIndex = 4;
             // 
+            // button7
+            // 
+            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("DejaVu Sans Condensed", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.button7.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button7.Location = new System.Drawing.Point(551, 1);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(120, 35);
+            this.button7.TabIndex = 2;
+            this.button7.Text = "Puntuación";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // frmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -256,5 +273,6 @@ namespace PuntuArte.Formularios
         private Button button5;
         private Button button4;
         public Panel pVisualizador;
+        private Button button7;
     }
 }

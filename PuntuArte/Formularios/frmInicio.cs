@@ -53,6 +53,11 @@ namespace PuntuArte.Formularios
                 pABM.Visible = true;
         }
 
+        private void CerrarMenuABM()
+        {
+            pABM.Visible = false;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Desea salir?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
@@ -94,5 +99,10 @@ namespace PuntuArte.Formularios
             abrirCerrarMenuABM();
         }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+            abrirFormHijo(new frmPuntuacion());
+            CerrarMenuABM();
+        }
     }
 }
