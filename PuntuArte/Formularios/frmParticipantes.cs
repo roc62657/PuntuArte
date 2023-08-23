@@ -246,16 +246,7 @@ namespace PuntuArte.Formularios
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int idCategoria = int.Parse(tdIdCategoria.Text);
-            int idParticipante = int.Parse(tbIdParticipante.Text);
-            
-            JuradoCategoria juradoCategoria = new JuradoCategoria() { IDCategoria = idCategoria , IDJurado = idParticipante };
-            
-            bool result = JuradoCategoriaConexion.Instancia.guardarJuradoCategoria(juradoCategoria);
-            if (result)
-            {
-                listaCategoriasDeJurado.DataSource = CategoriasConexion.Instancia.obtenerCategoriasPorJurado(idParticipante);
-            }
+
         }
 
         private void llenarListaCategorias()
@@ -306,6 +297,22 @@ namespace PuntuArte.Formularios
 
         }
 
+        private void bABMCategoriasPart_Click(object sender, EventArgs e)
+        {
+            int idCategoria = int.Parse(tdIdCategoria.Text);
+            int idParticipante = int.Parse(tbIdParticipante.Text);
+            JuradoCategoria juradoCategoria = new JuradoCategoria() { IDCategoria = idCategoria, IDJurado = idParticipante };
+            
+            bool existeCategoria = JuradoCategoriaConexion.Instancia.validoCategoriaExistente(juradoCategoria);
+            if (!existeCategoria) { 
+                bool result = JuradoCategoriaConexion.Instancia.guardarJuradoCategoria(juradoCategoria);
+                if (result)
+                {
+                    listaCategoriasDeJurado.DataSource = CategoriasConexion.Instancia.obtenerCategoriasPorJurado(idParticipante);
+                }
+            }
+            
+        }
     }
     
 }

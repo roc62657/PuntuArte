@@ -33,7 +33,7 @@ namespace PuntuArte.ConexionDDBB
             }
         }
 
-        public bool guardarJuradoCategoria(JuradoCategoria juradoCategoriaPuntuacion)
+        public bool guardarJuradoCategoria(JuradoCategoria juradoCategoria)
         {
             bool respuesta = true;
 
@@ -43,8 +43,8 @@ namespace PuntuArte.ConexionDDBB
                 string query = "Insert into Jurado_Categoria (IDJurado,IDCategoria) values (@idJurado,@idCategoria)";
 
                 SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
-                cmd.Parameters.Add(new SQLiteParameter("idJurado", juradoCategoriaPuntuacion.IDJurado));
-                cmd.Parameters.Add(new SQLiteParameter("idCategoria", juradoCategoriaPuntuacion.IDCategoria));
+                cmd.Parameters.Add(new SQLiteParameter("idJurado", juradoCategoria.IDJurado));
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", juradoCategoria.IDCategoria));
                 cmd.CommandType = System.Data.CommandType.Text;
                 if (cmd.ExecuteNonQuery() < 1)
                 {
@@ -53,6 +53,29 @@ namespace PuntuArte.ConexionDDBB
             }
             return respuesta;
 
+        }
+        public bool validoCategoriaExistente(JuradoCategoria juradoCategoria)
+        {
+            bool existeCategoria = false;
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Select * from Jurado_Categoria where IDJurado = @idJurado and IDCategoria = idCategoria";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idJurado", juradoCategoria.IDJurado));
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", juradoCategoria.IDCategoria));
+                cmd.CommandType = System.Data.CommandType.Text;
+                using (SQLiteDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        existeCategoria = true;
+                    }                    
+                }
+
+            }
+            return existeCategoria;
         }
 
     }
