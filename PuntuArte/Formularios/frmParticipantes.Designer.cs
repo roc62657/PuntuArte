@@ -31,12 +31,12 @@ namespace PuntuArte.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnEliminarParticipante = new System.Windows.Forms.Button();
             this.btnActualizarParticipante = new System.Windows.Forms.Button();
             this.btnCrearJurado = new System.Windows.Forms.Button();
@@ -64,6 +64,7 @@ namespace PuntuArte.Formularios
             this.tbNacionalidadParticipante = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.listaParticipantes = new System.Windows.Forms.DataGridView();
+            this.bEliminarCategoriaJurado = new System.Windows.Forms.Button();
             this.gbParticipantes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaCategoriasDeJurado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaParticipantes)).BeginInit();
@@ -106,6 +107,7 @@ namespace PuntuArte.Formularios
             // 
             // gbParticipantes
             // 
+            this.gbParticipantes.Controls.Add(this.bEliminarCategoriaJurado);
             this.gbParticipantes.Controls.Add(this.tdIdCategoria);
             this.gbParticipantes.Controls.Add(this.labelCatAg);
             this.gbParticipantes.Controls.Add(this.cbCategorias);
@@ -192,14 +194,14 @@ namespace PuntuArte.Formularios
             this.listaCategoriasDeJurado.BackgroundColor = System.Drawing.Color.LavenderBlush;
             this.listaCategoriasDeJurado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.listaCategoriasDeJurado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Purple;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaCategoriasDeJurado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaCategoriasDeJurado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.listaCategoriasDeJurado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaCategoriasDeJurado.GridColor = System.Drawing.Color.Indigo;
             this.listaCategoriasDeJurado.Location = new System.Drawing.Point(708, 39);
@@ -207,21 +209,21 @@ namespace PuntuArte.Formularios
             this.listaCategoriasDeJurado.Name = "listaCategoriasDeJurado";
             this.listaCategoriasDeJurado.ReadOnly = true;
             this.listaCategoriasDeJurado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaCategoriasDeJurado.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaCategoriasDeJurado.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.listaCategoriasDeJurado.RowHeadersVisible = false;
             this.listaCategoriasDeJurado.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LavenderBlush;
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.MediumPurple;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            this.listaCategoriasDeJurado.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LavenderBlush;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MediumPurple;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.listaCategoriasDeJurado.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.listaCategoriasDeJurado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaCategoriasDeJurado.Size = new System.Drawing.Size(449, 157);
             this.listaCategoriasDeJurado.TabIndex = 21;
@@ -229,11 +231,11 @@ namespace PuntuArte.Formularios
             // bABMCategoriasPart
             // 
             this.bABMCategoriasPart.BackColor = System.Drawing.SystemColors.Control;
-            this.bABMCategoriasPart.Location = new System.Drawing.Point(1018, 239);
+            this.bABMCategoriasPart.Location = new System.Drawing.Point(1050, 239);
             this.bABMCategoriasPart.Name = "bABMCategoriasPart";
-            this.bABMCategoriasPart.Size = new System.Drawing.Size(139, 22);
+            this.bABMCategoriasPart.Size = new System.Drawing.Size(107, 22);
             this.bABMCategoriasPart.TabIndex = 12;
-            this.bABMCategoriasPart.Text = "ABM Categorias";
+            this.bABMCategoriasPart.Text = "Agregar Categoria";
             this.bABMCategoriasPart.UseVisualStyleBackColor = false;
             this.bABMCategoriasPart.Visible = false;
             this.bABMCategoriasPart.Click += new System.EventHandler(this.bABMCategoriasPart_Click);
@@ -246,7 +248,6 @@ namespace PuntuArte.Formularios
             this.label9.Size = new System.Drawing.Size(117, 13);
             this.label9.TabIndex = 20;
             this.label9.Text = "Categorias por calificar:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // tbIdParticipante
             // 
@@ -255,7 +256,6 @@ namespace PuntuArte.Formularios
             this.tbIdParticipante.Size = new System.Drawing.Size(75, 20);
             this.tbIdParticipante.TabIndex = 19;
             this.tbIdParticipante.Visible = false;
-            this.tbIdParticipante.TextChanged += new System.EventHandler(this.tbIdParticipante_TextChanged);
             // 
             // label8
             // 
@@ -367,7 +367,6 @@ namespace PuntuArte.Formularios
             this.label4.Size = new System.Drawing.Size(132, 37);
             this.label4.TabIndex = 20;
             this.label4.Text = "Jurados";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // listaParticipantes
             // 
@@ -380,14 +379,14 @@ namespace PuntuArte.Formularios
             this.listaParticipantes.BackgroundColor = System.Drawing.Color.LavenderBlush;
             this.listaParticipantes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listaParticipantes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Purple;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaParticipantes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaParticipantes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.listaParticipantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaParticipantes.GridColor = System.Drawing.Color.Indigo;
             this.listaParticipantes.Location = new System.Drawing.Point(37, 111);
@@ -395,26 +394,37 @@ namespace PuntuArte.Formularios
             this.listaParticipantes.Name = "listaParticipantes";
             this.listaParticipantes.ReadOnly = true;
             this.listaParticipantes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaParticipantes.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Indigo;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaParticipantes.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.listaParticipantes.RowHeadersVisible = false;
             this.listaParticipantes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.LavenderBlush;
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.MediumPurple;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            this.listaParticipantes.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.LavenderBlush;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.MediumPurple;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.listaParticipantes.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.listaParticipantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaParticipantes.Size = new System.Drawing.Size(1533, 339);
             this.listaParticipantes.TabIndex = 19;
             this.listaParticipantes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaParticipantes_CellClick);
-            this.listaParticipantes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaParticipantes_CellContentClick);
+            // 
+            // bEliminarCategoriaJurado
+            // 
+            this.bEliminarCategoriaJurado.BackColor = System.Drawing.SystemColors.Control;
+            this.bEliminarCategoriaJurado.Location = new System.Drawing.Point(1163, 39);
+            this.bEliminarCategoriaJurado.Name = "bEliminarCategoriaJurado";
+            this.bEliminarCategoriaJurado.Size = new System.Drawing.Size(107, 22);
+            this.bEliminarCategoriaJurado.TabIndex = 35;
+            this.bEliminarCategoriaJurado.Text = "Quitar Categoria";
+            this.bEliminarCategoriaJurado.UseVisualStyleBackColor = false;
+            this.bEliminarCategoriaJurado.Visible = false;
+            this.bEliminarCategoriaJurado.Click += new System.EventHandler(this.bEliminarCategoriaJurado_Click);
             // 
             // frmParticipantes
             // 
@@ -469,5 +479,6 @@ namespace PuntuArte.Formularios
         private Label labelCatAg;
         private ComboBox cbCategorias;
         private TextBox tdIdCategoria;
+        private Button bEliminarCategoriaJurado;
     }
 }

@@ -77,6 +77,27 @@ namespace PuntuArte.ConexionDDBB
             }
             return existeCategoria;
         }
+        public bool eliminarJuradoCategoria(JuradoCategoria juradoCategoria)
+        {
+            bool respuesta = true;
+
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Delete from Jurado_Categoria where IDJurado=@idJurado and IDCategoria=@idCategoria";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idJurado", juradoCategoria.IDJurado));
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", juradoCategoria.IDCategoria));
+                cmd.CommandType = System.Data.CommandType.Text;
+                if (cmd.ExecuteNonQuery() < 1)
+                {
+                    respuesta = false;
+                }
+            }
+            return respuesta;
+
+        }
 
     }
 }
