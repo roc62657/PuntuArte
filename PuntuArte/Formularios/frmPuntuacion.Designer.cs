@@ -31,14 +31,17 @@ namespace PuntuArte.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label4 = new System.Windows.Forms.Label();
-            this.listaItemsJurados = new System.Windows.Forms.DataGridView();
             this.cbCategorias = new System.Windows.Forms.ComboBox();
-            this.cbCompanias = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.listaItemsJurados)).BeginInit();
+            this.lbCategoria = new System.Windows.Forms.Label();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.dgPuntuaciones = new System.Windows.Forms.DataGridView();
+            this.lbComp = new System.Windows.Forms.Label();
+            this.lbCompania = new System.Windows.Forms.Label();
+            this.btEnviar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbCompania = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPuntuaciones)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -51,85 +54,112 @@ namespace PuntuArte.Formularios
             this.label4.TabIndex = 11;
             this.label4.Text = "Puntuaciones";
             // 
-            // listaItemsJurados
-            // 
-            this.listaItemsJurados.AllowUserToAddRows = false;
-            this.listaItemsJurados.AllowUserToDeleteRows = false;
-            this.listaItemsJurados.AllowUserToResizeColumns = false;
-            this.listaItemsJurados.AllowUserToResizeRows = false;
-            this.listaItemsJurados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.listaItemsJurados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.listaItemsJurados.BackgroundColor = System.Drawing.Color.MistyRose;
-            this.listaItemsJurados.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listaItemsJurados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.MistyRose;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.MistyRose;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.MistyRose;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaItemsJurados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.listaItemsJurados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listaItemsJurados.EnableHeadersVisualStyles = false;
-            this.listaItemsJurados.GridColor = System.Drawing.Color.Indigo;
-            this.listaItemsJurados.Location = new System.Drawing.Point(40, 290);
-            this.listaItemsJurados.MultiSelect = false;
-            this.listaItemsJurados.Name = "listaItemsJurados";
-            this.listaItemsJurados.ReadOnly = true;
-            this.listaItemsJurados.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Indigo;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaItemsJurados.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.listaItemsJurados.RowHeadersVisible = false;
-            this.listaItemsJurados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.LavenderBlush;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.MediumPurple;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            this.listaItemsJurados.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.listaItemsJurados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.listaItemsJurados.Size = new System.Drawing.Size(1523, 483);
-            this.listaItemsJurados.TabIndex = 12;
-            // 
             // cbCategorias
             // 
             this.cbCategorias.FormattingEnabled = true;
-            this.cbCategorias.Location = new System.Drawing.Point(175, 136);
+            this.cbCategorias.Location = new System.Drawing.Point(175, 91);
             this.cbCategorias.Name = "cbCategorias";
             this.cbCategorias.Size = new System.Drawing.Size(329, 21);
             this.cbCategorias.TabIndex = 13;
             this.cbCategorias.SelectedIndexChanged += new System.EventHandler(this.cbCategorias_SelectedIndexChanged);
             // 
-            // cbCompanias
+            // lbCategoria
             // 
-            this.cbCompanias.FormattingEnabled = true;
-            this.cbCompanias.Location = new System.Drawing.Point(590, 136);
-            this.cbCompanias.Name = "cbCompanias";
-            this.cbCompanias.Size = new System.Drawing.Size(121, 21);
-            this.cbCompanias.TabIndex = 14;
-            this.cbCompanias.SelectedIndexChanged += new System.EventHandler(this.cbCompanias_SelectedIndexChanged);
+            this.lbCategoria.AutoSize = true;
+            this.lbCategoria.Location = new System.Drawing.Point(59, 94);
+            this.lbCategoria.Name = "lbCategoria";
+            this.lbCategoria.Size = new System.Drawing.Size(110, 13);
+            this.lbCategoria.TabIndex = 14;
+            this.lbCategoria.Text = "Seleccione categoria:";
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 811);
+            this.splitter1.TabIndex = 15;
+            this.splitter1.TabStop = false;
+            // 
+            // dgPuntuaciones
+            // 
+            this.dgPuntuaciones.BackgroundColor = System.Drawing.Color.Lavender;
+            this.dgPuntuaciones.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgPuntuaciones.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgPuntuaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPuntuaciones.Location = new System.Drawing.Point(648, 201);
+            this.dgPuntuaciones.Name = "dgPuntuaciones";
+            this.dgPuntuaciones.Size = new System.Drawing.Size(482, 276);
+            this.dgPuntuaciones.TabIndex = 16;
+            this.dgPuntuaciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPuntuaciones_CellClick);
+            // 
+            // lbComp
+            // 
+            this.lbComp.AutoSize = true;
+            this.lbComp.Location = new System.Drawing.Point(39, 176);
+            this.lbComp.Name = "lbComp";
+            this.lbComp.Size = new System.Drawing.Size(13, 13);
+            this.lbComp.TabIndex = 19;
+            this.lbComp.Text = "0";
+            this.lbComp.Visible = false;
+            // 
+            // lbCompania
+            // 
+            this.lbCompania.AutoSize = true;
+            this.lbCompania.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCompania.Location = new System.Drawing.Point(59, 175);
+            this.lbCompania.Name = "lbCompania";
+            this.lbCompania.Size = new System.Drawing.Size(0, 31);
+            this.lbCompania.TabIndex = 20;
+            // 
+            // btEnviar
+            // 
+            this.btEnviar.Location = new System.Drawing.Point(523, 199);
+            this.btEnviar.Name = "btEnviar";
+            this.btEnviar.Size = new System.Drawing.Size(125, 27);
+            this.btEnviar.TabIndex = 21;
+            this.btEnviar.Text = "Enviar Puntuacion";
+            this.btEnviar.UseVisualStyleBackColor = true;
+            this.btEnviar.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(59, 133);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Seleccione compañia:";
+            // 
+            // cbCompania
+            // 
+            this.cbCompania.FormattingEnabled = true;
+            this.cbCompania.Location = new System.Drawing.Point(174, 132);
+            this.cbCompania.Name = "cbCompania";
+            this.cbCompania.Size = new System.Drawing.Size(329, 21);
+            this.cbCompania.TabIndex = 23;
+            this.cbCompania.SelectedIndexChanged += new System.EventHandler(this.cbCompania_SelectedIndexChanged);
             // 
             // frmPuntuacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LavenderBlush;
+            this.BackColor = System.Drawing.Color.Lavender;
             this.ClientSize = new System.Drawing.Size(1617, 811);
-            this.Controls.Add(this.cbCompanias);
+            this.Controls.Add(this.cbCompania);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btEnviar);
+            this.Controls.Add(this.lbCompania);
+            this.Controls.Add(this.lbComp);
+            this.Controls.Add(this.dgPuntuaciones);
+            this.Controls.Add(this.splitter1);
+            this.Controls.Add(this.lbCategoria);
             this.Controls.Add(this.cbCategorias);
-            this.Controls.Add(this.listaItemsJurados);
             this.Controls.Add(this.label4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPuntuacion";
             this.Text = "Cliente";
             this.Load += new System.EventHandler(this.frmPuntuacion_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.listaItemsJurados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPuntuaciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,8 +168,14 @@ namespace PuntuArte.Formularios
         #endregion
 
         private Label label4;
-        private DataGridView listaItemsJurados;
         private ComboBox cbCategorias;
-        private ComboBox cbCompanias;
+        private Label lbCategoria;
+        private Splitter splitter1;
+        private DataGridView dgPuntuaciones;
+        private Label lbComp;
+        private Label lbCompania;
+        private Button btEnviar;
+        private Label label1;
+        private ComboBox cbCompania;
     }
 }

@@ -72,6 +72,8 @@
     <Compile Include="ConexionDDBB\CategoriasConexion.cs" />
     <Compile Include="ConexionDDBB\CompaniasConexion.cs" />
     <Compile Include="ConexionDDBB\ParticipantesConexion.cs" />
+    <Compile Include="DTOs\CompaniaPuntuacionDTO.cs" />
+    <Compile Include="DTOs\PuntuacionDTO.cs" />
     <Compile Include="DTOs\ParticipantesDTO.cs" />
     <Compile Include="Formularios\frmABMItemPuntuacion.cs">
       <SubType>Form</SubType>
@@ -156,6 +158,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -167,6 +170,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\editVer.png" />
     <Content Include="SistemaDB.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

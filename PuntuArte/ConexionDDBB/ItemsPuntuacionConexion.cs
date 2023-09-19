@@ -234,5 +234,22 @@ namespace PuntuArte.ConexionDDBB
             return listItemsPuntuacion;
         }
 
+        public List<CompaniaPuntuacionDTO> obtenerDatosPuntuacion(int idCategoria)
+        {
+            List<CompaniaPuntuacionDTO> lcompaniaPuntuacionDTO = new List<CompaniaPuntuacionDTO> { };    
+
+            List<ItemsPuntuacion> lItemsPuntuacion = ItemsPuntuacionConexion.Instancia.obtenerItemsAsignadosACategoria(idCategoria);
+            List<Companias> lcompanias = CompaniasConexion.Instancia.obtenerCompaniasEnCompetenciaPorCategoria(idCategoria);
+            foreach (Companias compania in lcompanias)
+            {
+                CompaniaPuntuacionDTO companiaPuntuacion = new CompaniaPuntuacionDTO();
+                companiaPuntuacion.IDCompania = compania.IDCompania;
+                companiaPuntuacion.Nombre = compania.Nombre;
+                companiaPuntuacion.itemsPuntuacion = lItemsPuntuacion;
+                lcompaniaPuntuacionDTO.Add(companiaPuntuacion);
+            }
+            return lcompaniaPuntuacionDTO;
+        }
+             
     }
 }
