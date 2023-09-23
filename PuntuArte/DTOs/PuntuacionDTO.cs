@@ -10,7 +10,12 @@ namespace PuntuArte.Modelo
 {
     public class PuntuacionDTO
     {
-        public List<ItemsPuntuacion> itemsPuntuacion;
-       public  List<Companias> companias;
+        public int IDItemPuntuacion { get; set; }
+        public int IDCategoria { get; set; }
+        public int IDJurado { get; set; }
+        public string NombreJurado { get; set; }
+        public int IDCompania { get; set; }
+        public int Puntuacion { get; set; }
+
     }
 }

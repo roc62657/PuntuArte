@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -40,130 +41,114 @@ namespace PuntuArte.Formularios
 
         private void cbCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
+            List<Companias> lCompanias = new List<Companias>();
+            lCompanias.Add(new Companias()
+            {
+                IDCompania = -1,
+                Nombre = "Seleccione Compañía a evaluar",
+                Detalle = "",
+                Nacionalidad = "",
+            });
             Categorias categoriaSeleccionada = (Categorias)cbCategorias.SelectedItem;
-            cbCompania.DataSource  = CompaniasConexion.Instancia.obtenerCompaniasEnCompetenciaPorCategoria(categoriaSeleccionada.IDCategoria);
+            lCompanias.AddRange(CompaniasConexion.Instancia.obtenerCompaniasEnCompetenciaPorCategoria(categoriaSeleccionada.IDCategoria));
+            cbCompania.DataSource = lCompanias;
             cbCompania.DisplayMember = "Nombre";
             cbCompania.ValueMember = "IDCompania";
-        }
 
+        }
 
         private void cbCompania_SelectedIndexChanged(object sender, EventArgs e)
         {
             Categorias categoriaSeleccionada = (Categorias)cbCategorias.SelectedItem;
             Companias companiaSeleccionada = (Companias)cbCompania.SelectedItem;
-            if (companiaSeleccionada.IDCompania != -1) { 
-            obtenerPuntuacion(categoriaSeleccionada.IDCategoria, companiaSeleccionada.IDCompania -1);
+            if (companiaSeleccionada.IDCompania != -1 && categoriaSeleccionada.IDCategoria != -1) { 
+                obtenerPuntuacion(categoriaSeleccionada.IDCategoria, companiaSeleccionada.IDCompania);
             }
-
         }
 
-        private void obtenerPuntuacion(int idCategoria, int indiceCompania)
+        private void obtenerPuntuacion(int idCategoria, int idCompania)
         {
-            List<CompaniaPuntuacionDTO> lCompaniaPuntuacionDTO = ItemsPuntuacionConexion.Instancia.obtenerDatosPuntuacion(idCategoria);
-            lbCompania.Text = lCompaniaPuntuacionDTO[indiceCompania].Nombre;
-
-            TextBox[] valorItems;
-            Label[] items;
-
-            int totalItems = lCompaniaPuntuacionDTO[indiceCompania].itemsPuntuacion.Count;
-            if(totalItems > 0)
+            //se crean las columnas segun items de puntuacion
+            List<ItemsPuntuacion> lItemPuntuacion = ItemsPuntuacionConexion.Instancia.obtenerItemsAsignadosACategoria(idCategoria).OrderBy(a => a.IDItemPuntuacion).ToList();
+            foreach (ItemsPuntuacion itemPuntuacion in lItemPuntuacion)
             {
-                btEnviar.Visible = true;
+                DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
+                columna.HeaderText = itemPuntuacion.Nombre;
+                columna.Name = itemPuntuacion.IDItemPuntuacion + ";" + itemPuntuacion.Nombre;
+                columna.Tag = itemPuntuacion.IDItemPuntuacion;
+                dgPuntuaciones.Columns.Add(columna);
             }
 
-            int y = 240;
-            items = new Label[totalItems];
-            for (int i = 0; i < totalItems; i++)
+            //se obtienen puntuaciones por compania
+            int idJuradoRecorrido = 0;
+            int numeroColumna = 0;
+            int cantidadColumnasRecorridas = 0;
+            DataTable dt = new DataTable();
+            //dt.Columns.Add(dgPuntuaciones.Columns as DataColumn)
+            DataGridViewRow fila = (DataGridViewRow)dgPuntuaciones.Rows[0].Clone();
+            List<PuntuacionDTO> puntuacionDTOs = ItemsPuntuacionConexion.Instancia.obtenerPuntuacionPorCompania(idCompania); //lo trae ordenado por IDJurado + IDItemPuntuacion
+            foreach (PuntuacionDTO itemPuntuacionDto in puntuacionDTOs)
             {
-                items[i] = new Label();
-                items[i].Location = new Point(59, y);
-                items[i].Name = String.Concat("lb_",lCompaniaPuntuacionDTO[indiceCompania].itemsPuntuacion[i].Nombre);
-                items[i].Size = new Size(200,30);
-                items[i].TabIndex = i;
-                items[i].Text = lCompaniaPuntuacionDTO[indiceCompania].itemsPuntuacion[i].Nombre;
-                items[i].Visible = true;
-                items[i].Tag = i;
-                this.Controls.Add(items[i]);
-                y += 40;
-            }
-            valorItems = new TextBox[totalItems];
-            int _y = 239;
-            for (int i = 0; i < totalItems; i++)
-            {
-                valorItems[i] = new TextBox();
-                valorItems[i].Location = new Point(300, _y);
-                valorItems[i].Name = String.Concat("lb_", i.ToString());
-                valorItems[i].Size = new Size(45, 15);
-                valorItems[i].Text = "";
-                valorItems[i].Visible = true;
-                valorItems[i].Tag = i;
-                this.Controls.Add(valorItems[i]);
-                _y += 40;
-            }
-
-        }
-
-        private void obtenerPuntuacionOld(int idCategoria)
-        {
-
-            dgPuntuaciones.DataSource = null;
-            List<CompaniaPuntuacionDTO> lCompaniaPuntuacionDTO = ItemsPuntuacionConexion.Instancia.obtenerDatosPuntuacion(idCategoria);
-
-            DataGridViewTextBoxColumn Col_Text;
-            Col_Text = new DataGridViewTextBoxColumn()
-            {
-                Name = "companias",
-                HeaderText = " ",
-                Width = 10
-            };
-            this.dgPuntuaciones.Columns.Add(Col_Text);
-            Col_Text = new DataGridViewTextBoxColumn()
-            {
-                Name = "companias",
-                HeaderText = " ",
-                Width = 100
-            };
-            this.dgPuntuaciones.Columns.Add(Col_Text);
-
-            //Cargo las filas con las companias de puntuacion
-            foreach (CompaniaPuntuacionDTO companiaPuntuacion in lCompaniaPuntuacionDTO)
-            {
-                dgPuntuaciones.Rows.Add(companiaPuntuacion.IDCompania, companiaPuntuacion.Nombre);
-            }
-
-
-            //Cargo las columnas con items de puntuacion
-            foreach (ItemsPuntuacion itemPuntuacion in lCompaniaPuntuacionDTO[0].itemsPuntuacion)
-            {
-                Col_Text = new DataGridViewTextBoxColumn()
+                if (idJuradoRecorrido != itemPuntuacionDto.IDJurado) //la primera vez que entra carga las primeras 3 filas
                 {
-                    Name = "companias",
-                    HeaderText = itemPuntuacion.Nombre,
-                    Width = 100
-                };
-                this.dgPuntuaciones.Columns.Add(Col_Text);
+                    fila = (DataGridViewRow)dgPuntuaciones.Rows[0].Clone();
+                    idJuradoRecorrido = itemPuntuacionDto.IDJurado;
+                    fila.Cells[0].Value = itemPuntuacionDto.IDJurado;
+                    fila.Cells[1].Value = itemPuntuacionDto.NombreJurado;
+                    fila.Cells[2].Value = itemPuntuacionDto.Puntuacion;
+                    numeroColumna = 3;
+                }
+                else
+                { //entra cuando va completando las columnas de la fila que se esta cargando
+                    fila.Cells[numeroColumna].Value = itemPuntuacionDto.Puntuacion;
+                    numeroColumna ++;
+                }
+
+                cantidadColumnasRecorridas++; //si es la ultima fila, la agrega a la tabla
+                if (cantidadColumnasRecorridas == lItemPuntuacion.Count)
+                {
+                    dgPuntuaciones.Rows.Add(fila);
+                    cantidadColumnasRecorridas = 0; //reinicia
+                }
             }
-            
-
-            //dgPuntuaciones.DataSource = ItemsPuntuacionConexion.Instancia.obtenerDatosPuntuacion(idCategoria);
-            //dgPuntuaciones.Rows[0].Selected = false;
-
-
-
 
         }
 
-
-        private void dgPuntuaciones_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btEnviar_Click(object sender, EventArgs e)
         {
-            try
-            {
-           //     fr.Text = dgPuntuaciones.CurrentCell.Value.ToString();
-            }catch (Exception ex)
-            {
+            Companias companiaSeleccionada = (Companias)cbCompania.SelectedItem;
+            Categorias categoriaSeleccionada = (Categorias)cbCategorias.SelectedItem;
 
+            PuntuacionesFinales pFinal = new PuntuacionesFinales();
+            pFinal.IDCompania = companiaSeleccionada.IDCompania;
+            pFinal.IDCategoria = categoriaSeleccionada.IDCategoria;
+            pFinal.PuntajeFinal = 0;
+            pFinal.Puesto = 0;
+            pFinal.Observacion = 0;
+
+            int idPuntuacionFinal = PuntuacionesConexion.Instancia.guardarPuntuacionFinal(pFinal);
+
+            foreach (DataGridViewRow fila in dgPuntuaciones.Rows)
+            {
+                int idJurado = int.Parse(fila.Cells[0].Value.ToString()); //siempre la ubicacion 0 va a ser el IDJurado
+                for (int i = 2; i < fila.Cells.Count; i++)
+                {
+                    int puntaje = int.Parse(fila.Cells[i].Value.ToString());
+                    //int indexColumna = fila.Cells[i].ColumnIndex;
+                    int idItemPuntuacion = int.Parse(dgPuntuaciones.Columns[fila.Cells[i].ColumnIndex].Tag.ToString());
+
+                    PuntuacionesDetalle pDetalle = new PuntuacionesDetalle();
+                    pDetalle.IDPuntuacionFinal = idPuntuacionFinal;
+                    pDetalle.IDJurado = idJurado;
+                    pDetalle.IDCompania = companiaSeleccionada.IDCompania;
+                    pDetalle.IDCategoria = categoriaSeleccionada.IDCategoria;
+                    pDetalle.IDItemPuntuacion = idItemPuntuacion;
+                    pDetalle.Puntuacion = puntaje.ToString();
+
+                    int idPuntuacionDetalle = PuntuacionesConexion.Instancia.guardarPuntuacionDetalle(pDetalle);
+                }
+                
             }
         }
-
     }
 }

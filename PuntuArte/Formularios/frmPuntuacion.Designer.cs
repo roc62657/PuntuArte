@@ -36,6 +36,8 @@ namespace PuntuArte.Formularios
             this.lbCategoria = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.dgPuntuaciones = new System.Windows.Forms.DataGridView();
+            this.JuradoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JuradoNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbComp = new System.Windows.Forms.Label();
             this.lbCompania = new System.Windows.Forms.Label();
             this.btEnviar = new System.Windows.Forms.Button();
@@ -86,11 +88,27 @@ namespace PuntuArte.Formularios
             this.dgPuntuaciones.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgPuntuaciones.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgPuntuaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPuntuaciones.Location = new System.Drawing.Point(648, 201);
+            this.dgPuntuaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.JuradoId,
+            this.JuradoNombre});
+            this.dgPuntuaciones.Location = new System.Drawing.Point(490, 284);
             this.dgPuntuaciones.Name = "dgPuntuaciones";
             this.dgPuntuaciones.Size = new System.Drawing.Size(482, 276);
             this.dgPuntuaciones.TabIndex = 16;
-            this.dgPuntuaciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPuntuaciones_CellClick);
+            // 
+            // JuradoId
+            // 
+            this.JuradoId.Frozen = true;
+            this.JuradoId.HeaderText = "JuradoId";
+            this.JuradoId.Name = "JuradoId";
+            this.JuradoId.Visible = false;
+            // 
+            // JuradoNombre
+            // 
+            this.JuradoNombre.Frozen = true;
+            this.JuradoNombre.HeaderText = "Jurado";
+            this.JuradoNombre.Name = "JuradoNombre";
+            this.JuradoNombre.ReadOnly = true;
             // 
             // lbComp
             // 
@@ -113,13 +131,13 @@ namespace PuntuArte.Formularios
             // 
             // btEnviar
             // 
-            this.btEnviar.Location = new System.Drawing.Point(523, 199);
+            this.btEnviar.Location = new System.Drawing.Point(478, 625);
             this.btEnviar.Name = "btEnviar";
             this.btEnviar.Size = new System.Drawing.Size(125, 27);
             this.btEnviar.TabIndex = 21;
             this.btEnviar.Text = "Enviar Puntuacion";
             this.btEnviar.UseVisualStyleBackColor = true;
-            this.btEnviar.Visible = false;
+            this.btEnviar.Click += new System.EventHandler(this.btEnviar_Click);
             // 
             // label1
             // 
@@ -177,5 +195,7 @@ namespace PuntuArte.Formularios
         private Button btEnviar;
         private Label label1;
         private ComboBox cbCompania;
+        private DataGridViewTextBoxColumn JuradoId;
+        private DataGridViewTextBoxColumn JuradoNombre;
     }
 }

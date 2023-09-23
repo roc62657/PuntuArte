@@ -234,6 +234,38 @@ namespace PuntuArte.ConexionDDBB
             return listItemsPuntuacion;
         }
 
+        public List<PuntuacionDTO> obtenerPuntuacionPorCompania(int idCompania)
+        {
+            List<PuntuacionDTO> listItemsPuntuacion = new List<PuntuacionDTO>();
+
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "SELECT ip.IDItemPuntuacion, jc.IDCategoria, jc.IDJurado, p.Nombre as NombreJurado, case when pd.Puntuacion is not null then pd.Puntuacion else 0 end as Puntuacion, cc.IDCompania FROM Categoria_Puntuacion cp JOIN ItemsPuntuacion ip on ip.IDItemPuntuacion = cp.IDItemPuntuacion JOIN Jurado_Categoria jc on jc.IDCategoria = cp.IDCategoria JOIN Participantes p on p.IDParticipante = jc.IDJurado JOIN Compania_Categoria cc on cc.IDCategoria = cp.IDCategoria LEFT JOIN Puntuaciones_Detalle pd on pd.IDJurado = jc.IDJurado AND pd.IDCategoria = cp.IDCategoria AND pd.IDItemPuntuacion = ip.IDItemPuntuacion WHERE cc.IDCompania = @idCompania order by jc.IDJurado, ip.IDItemPuntuacion";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                using (SQLiteDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        listItemsPuntuacion.Add(new PuntuacionDTO()
+                        {
+                            IDItemPuntuacion = int.Parse(dr["IDItemPuntuacion"].ToString()),
+                            IDCategoria = int.Parse(dr["IDCategoria"].ToString()),
+                            IDJurado = int.Parse(dr["IDJurado"].ToString()),
+                            NombreJurado = dr["NombreJurado"].ToString(),
+                            IDCompania = int.Parse(dr["IDCompania"].ToString()),
+                            Puntuacion = int.Parse(dr["Puntuacion"].ToString()),
+                        });
+                    }
+                }
+            }
+            return listItemsPuntuacion;
+        }
+
         public List<CompaniaPuntuacionDTO> obtenerDatosPuntuacion(int idCategoria)
         {
             List<CompaniaPuntuacionDTO> lcompaniaPuntuacionDTO = new List<CompaniaPuntuacionDTO> { };    

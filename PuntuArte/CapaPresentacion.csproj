@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConexionDDBB\PuntuacionesConexion.cs" />
     <Compile Include="ConexionDDBB\ItemsPuntuacionConexion.cs" />
     <Compile Include="ConexionDDBB\JuradoCategoriaConexion.cs" />
     <Compile Include="ConexionDDBB\CategoriaPuntuacionConexion.cs" />
