@@ -62,6 +62,30 @@ namespace PuntuArte.ConexionDDBB
 
         }
 
+        public int actualizarPuntuacionFinal(PuntuacionesFinales puntuacionFinal)
+        {
+            int respuesta = puntuacionFinal.IDPuntuacionFinal;
+
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Update Puntuaciones_Finales set PuntajeFinal = @puntajeFinal, Puesto = @puesto, Observacion = @observacion where IDPuntuacionFinal = @idPuntuacionFinal";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("puntajeFinal", puntuacionFinal.PuntajeFinal));
+                cmd.Parameters.Add(new SQLiteParameter("puesto", puntuacionFinal.Puesto));
+                cmd.Parameters.Add(new SQLiteParameter("observacion", puntuacionFinal.Observacion));
+                cmd.Parameters.Add(new SQLiteParameter("idPuntuacionFinal", puntuacionFinal.IDPuntuacionFinal));
+                cmd.CommandType = System.Data.CommandType.Text;
+                if (cmd.ExecuteNonQuery() < 1)
+                {
+                    respuesta = 0;
+                }
+            }
+            return respuesta;
+
+        }
+
 
         public int guardarPuntuacionDetalle(PuntuacionesDetalle puntuacionDetalle)
         {
@@ -93,33 +117,94 @@ namespace PuntuArte.ConexionDDBB
 
         }
 
-        //public int actualizarCompanias(Companias compania)
-        //{
-        //    int respuesta = 0;
+        public int actualizarPuntuacionDetalle(PuntuacionesDetalle puntuacionDetalle)
+        {
+            int respuesta = puntuacionDetalle.IDPuntuacionDetalle;
 
-        //    using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
-        //    {
-        //        conexion_.Open();
-        //        string query = "Update Companias set Nombre = @nombre, Detalle = @detalle, Nacionalidad = @nacionalidad where IDCompania = @idCompania";
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Update Puntuaciones_Detalle set Puntuacion = @puntuacion where IDPuntuacionDetalle = @idPuntuacionDetalle";
 
-        //        SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
-        //        cmd.Parameters.Add(new SQLiteParameter("nombre", compania.Nombre));
-        //        cmd.Parameters.Add(new SQLiteParameter("detalle", compania.Detalle));
-        //        cmd.Parameters.Add(new SQLiteParameter("nacionalidad", compania.Nacionalidad));
-        //        cmd.Parameters.Add(new SQLiteParameter("idCompania", compania.IDCompania));
-        //        cmd.CommandType = System.Data.CommandType.Text;
-        //        if (cmd.ExecuteNonQuery() < 1)
-        //        {
-        //            respuesta = -1;
-        //        }
-        //        else
-        //        {
-        //            respuesta = compania.IDCompania;
-        //        }
-        //    }
-        //    return respuesta;
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("puntuacion", puntuacionDetalle.Puntuacion));
+                cmd.Parameters.Add(new SQLiteParameter("idPuntuacionDetalle", puntuacionDetalle.IDPuntuacionDetalle));
+                cmd.CommandType = System.Data.CommandType.Text;
+                if (cmd.ExecuteNonQuery() < 1)
+                {
+                    respuesta = 0;
+                }
+            }
+            return respuesta;
 
-        //}
+        }
+
+
+        public PuntuacionesFinales obtenerPuntuacionFinal(int idCategoria, int idCompania)
+        {
+            PuntuacionesFinales puntuacionFinal = new PuntuacionesFinales();
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Select * from Puntuaciones_Finales where IDCompania = @idCompania and IDCategoria = @idCategoria";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", idCategoria));
+                cmd.CommandType = System.Data.CommandType.Text;
+                using (SQLiteDataReader dr = cmd.ExecuteReader())
+                {
+
+                    while (dr.Read())
+                    {
+                        puntuacionFinal.IDPuntuacionFinal = int.Parse(dr["IDPuntuacionFinal"].ToString());
+                        puntuacionFinal.IDCompania = int.Parse(dr["IDCompania"].ToString());
+                        puntuacionFinal.IDCategoria = int.Parse(dr["IDCategoria"].ToString());
+                        puntuacionFinal.PuntajeFinal = int.Parse(dr["PuntajeFinal"].ToString());
+                        puntuacionFinal.Puesto = int.Parse(dr["Puesto"].ToString());
+                        puntuacionFinal.Observacion = int.Parse(dr["Observacion"].ToString());
+                    };
+
+                }
+
+            }
+            return puntuacionFinal;
+        }
+
+        public PuntuacionesDetalle obtenerPuntuacionDetalle(int idCategoria, int idCompania, int idPuntuacionFinal, int idJurado, int idItemPuntuacion)
+        {
+            PuntuacionesDetalle puntuacionDetalle = new PuntuacionesDetalle();
+            using (SQLiteConnection conexion_ = new SQLiteConnection(conexion))
+            {
+                conexion_.Open();
+                string query = "Select * from Puntuaciones_Detalle where IDCompania = @idCompania and IDCategoria = @idCategoria and IDPuntuacionFinal = @idPuntuacionFinal and IDJurado = @idJurado and IDItemPuntuacion = @idItemPuntuacion";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conexion_);
+                cmd.Parameters.Add(new SQLiteParameter("idCompania", idCompania));
+                cmd.Parameters.Add(new SQLiteParameter("idCategoria", idCategoria));
+                cmd.Parameters.Add(new SQLiteParameter("idPuntuacionFinal", idPuntuacionFinal));
+                cmd.Parameters.Add(new SQLiteParameter("idJurado", idJurado));
+                cmd.Parameters.Add(new SQLiteParameter("idItemPuntuacion", idItemPuntuacion));
+                cmd.CommandType = System.Data.CommandType.Text;
+                using (SQLiteDataReader dr = cmd.ExecuteReader())
+                {
+
+                    while (dr.Read())
+                    {
+                        puntuacionDetalle.IDPuntuacionDetalle = int.Parse(dr["IDPuntuacionDetalle"].ToString());
+                        puntuacionDetalle.IDPuntuacionFinal = int.Parse(dr["IDPuntuacionFinal"].ToString());
+                        puntuacionDetalle.IDJurado = int.Parse(dr["IDJurado"].ToString());
+                        puntuacionDetalle.IDCompania = int.Parse(dr["IDCompania"].ToString());
+                        puntuacionDetalle.IDCategoria = int.Parse(dr["IDCategoria"].ToString());
+                        puntuacionDetalle.IDItemPuntuacion = int.Parse(dr["IDItemPuntuacion"].ToString());
+                        puntuacionDetalle.Puntuacion = dr["Puntuacion"].ToString();
+                    };
+
+                }
+
+            }
+            return puntuacionDetalle;
+        }
 
 
 

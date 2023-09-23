@@ -120,13 +120,23 @@ namespace PuntuArte.Formularios
             Categorias categoriaSeleccionada = (Categorias)cbCategorias.SelectedItem;
 
             PuntuacionesFinales pFinal = new PuntuacionesFinales();
-            pFinal.IDCompania = companiaSeleccionada.IDCompania;
-            pFinal.IDCategoria = categoriaSeleccionada.IDCategoria;
-            pFinal.PuntajeFinal = 0;
-            pFinal.Puesto = 0;
-            pFinal.Observacion = 0;
+            pFinal = PuntuacionesConexion.Instancia.obtenerPuntuacionFinal(categoriaSeleccionada.IDCategoria, companiaSeleccionada.IDCompania);
+            int idPuntuacionFinal = 0;
+            if (pFinal.IDPuntuacionFinal > 0)
+            {
+                idPuntuacionFinal = PuntuacionesConexion.Instancia.actualizarPuntuacionFinal(pFinal);
+            }
+            else
+            {
+                pFinal.IDCompania = companiaSeleccionada.IDCompania;
+                pFinal.IDCategoria = categoriaSeleccionada.IDCategoria;
+                pFinal.PuntajeFinal = 0;
+                pFinal.Puesto = 0;
+                pFinal.Observacion = 0;
 
-            int idPuntuacionFinal = PuntuacionesConexion.Instancia.guardarPuntuacionFinal(pFinal);
+                idPuntuacionFinal = PuntuacionesConexion.Instancia.guardarPuntuacionFinal(pFinal);
+            }
+
 
             foreach (DataGridViewRow fila in dgPuntuaciones.Rows)
             {
@@ -138,14 +148,26 @@ namespace PuntuArte.Formularios
                     int idItemPuntuacion = int.Parse(dgPuntuaciones.Columns[fila.Cells[i].ColumnIndex].Tag.ToString());
 
                     PuntuacionesDetalle pDetalle = new PuntuacionesDetalle();
-                    pDetalle.IDPuntuacionFinal = idPuntuacionFinal;
-                    pDetalle.IDJurado = idJurado;
-                    pDetalle.IDCompania = companiaSeleccionada.IDCompania;
-                    pDetalle.IDCategoria = categoriaSeleccionada.IDCategoria;
-                    pDetalle.IDItemPuntuacion = idItemPuntuacion;
-                    pDetalle.Puntuacion = puntaje.ToString();
+                    pDetalle = PuntuacionesConexion.Instancia.obtenerPuntuacionDetalle(categoriaSeleccionada.IDCategoria, companiaSeleccionada.IDCompania, idPuntuacionFinal, idJurado, idItemPuntuacion);
+                    int idPuntuacionDetalle = 0;
+                    if (pDetalle.IDPuntuacionDetalle > 0)
+                    {
+                        pDetalle.Puntuacion = puntaje.ToString();
 
-                    int idPuntuacionDetalle = PuntuacionesConexion.Instancia.guardarPuntuacionDetalle(pDetalle);
+                        idPuntuacionDetalle = PuntuacionesConexion.Instancia.actualizarPuntuacionDetalle(pDetalle);
+                    }
+                    else
+                    {
+                        pDetalle.IDPuntuacionFinal = idPuntuacionFinal;
+                        pDetalle.IDJurado = idJurado;
+                        pDetalle.IDCompania = companiaSeleccionada.IDCompania;
+                        pDetalle.IDCategoria = categoriaSeleccionada.IDCategoria;
+                        pDetalle.IDItemPuntuacion = idItemPuntuacion;
+                        pDetalle.Puntuacion = puntaje.ToString();
+
+                        idPuntuacionDetalle = PuntuacionesConexion.Instancia.guardarPuntuacionDetalle(pDetalle);
+                    }
+                    
                 }
                 
             }
