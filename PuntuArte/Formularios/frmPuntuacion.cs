@@ -55,14 +55,27 @@ namespace PuntuArte.Formularios
             cbCompania.DisplayMember = "Nombre";
             cbCompania.ValueMember = "IDCompania";
 
+            settearTablaPorDefecto();
         }
 
         private void cbCompania_SelectedIndexChanged(object sender, EventArgs e)
         {
+            settearTablaPorDefecto();
+            dgPuntuaciones.DataSource = null;
             Categorias categoriaSeleccionada = (Categorias)cbCategorias.SelectedItem;
             Companias companiaSeleccionada = (Companias)cbCompania.SelectedItem;
             if (companiaSeleccionada.IDCompania != -1 && categoriaSeleccionada.IDCategoria != -1) { 
                 obtenerPuntuacion(categoriaSeleccionada.IDCategoria, companiaSeleccionada.IDCompania);
+            }
+        }
+
+        private void settearTablaPorDefecto()
+        {
+            dgPuntuaciones.Rows.Clear();
+
+            for (int i = dgPuntuaciones.ColumnCount -1; i > 1; i--)
+            {
+                dgPuntuaciones.Columns.RemoveAt(i);
             }
         }
 
@@ -83,8 +96,7 @@ namespace PuntuArte.Formularios
             int idJuradoRecorrido = 0;
             int numeroColumna = 0;
             int cantidadColumnasRecorridas = 0;
-            DataTable dt = new DataTable();
-            //dt.Columns.Add(dgPuntuaciones.Columns as DataColumn)
+            dgPuntuaciones.AllowUserToAddRows = true; //habilita solamente para hacer el Clone, no sacar
             DataGridViewRow fila = (DataGridViewRow)dgPuntuaciones.Rows[0].Clone();
             List<PuntuacionDTO> puntuacionDTOs = ItemsPuntuacionConexion.Instancia.obtenerPuntuacionPorCompania(idCompania); //lo trae ordenado por IDJurado + IDItemPuntuacion
             foreach (PuntuacionDTO itemPuntuacionDto in puntuacionDTOs)
@@ -112,6 +124,7 @@ namespace PuntuArte.Formularios
                 }
             }
 
+            dgPuntuaciones.AllowUserToAddRows = false; //oculta la ultima columna, no sacar
         }
 
         private void btEnviar_Click(object sender, EventArgs e)

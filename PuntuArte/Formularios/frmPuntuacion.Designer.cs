@@ -84,6 +84,8 @@ namespace PuntuArte.Formularios
             // 
             // dgPuntuaciones
             // 
+            this.dgPuntuaciones.AllowUserToDeleteRows = false;
+            this.dgPuntuaciones.AllowUserToResizeColumns = false;
             this.dgPuntuaciones.BackgroundColor = System.Drawing.Color.Lavender;
             this.dgPuntuaciones.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgPuntuaciones.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
